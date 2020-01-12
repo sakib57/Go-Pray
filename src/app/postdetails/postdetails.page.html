@@ -1,0 +1,141 @@
+<ion-header>
+    <ion-toolbar color="success">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/tabs/tab1" icon="arrow-back"></ion-back-button>
+        </ion-buttons>
+        <ion-title>{{ news.title }}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="dataAvailable">
+    <!-- <img *ngIf="news.image_url == null" src="/assets/dd.png" alt="" style="width:100%;height: 280px;"/> -->
+    <img *ngIf="news.image_url != null" src="{{ news.image_url }}" alt="" style="width:100%;height: 280px;"/>
+    <ion-card class="welcome-card" >
+
+        <ion-item lines="none">
+            <ion-avatar slot="start">
+                <img *ngIf="news.source_name == ''" src="/assets/avatar.svg">
+                <img *ngIf="news.source_name != ''" src="{{ news.source_name }}">
+            </ion-avatar>
+            <ion-label>
+                {{ news.author }}
+                <p>{{ news.published_at }}</p>
+            </ion-label>
+        </ion-item>
+
+
+        <ion-card-content class="ion-padding">
+            <h3>{{ news.title }}</h3>
+            <p>{{ news.description }}</p>
+            <p>{{ news.content }}</p>
+            
+            <ion-list style="margin-top:10px">
+                <h3>You may like </h3>
+
+                <ion-item *ngFor="let v of related_news" routerLink="/postdetails/{{  v.id }}">
+                    <ion-thumbnail slot="start">
+                        <img *ngIf="v.source_name != ''" height="100" src="{{ v.source_name }}">
+                        <img *ngIf="v.source_name == ''" height="100" src="/assets/avatar.svg">
+                    </ion-thumbnail>
+                    <ion-label>{{ v.title }}</ion-label>
+                </ion-item>
+
+            </ion-list>
+
+        </ion-card-content>
+
+
+    </ion-card>
+    <ion-footer class="spaceFooter">
+        <ion-grid>
+            <ion-row>
+                <ion-col>
+                    <ion-icon *ngIf="!news_liked" name="heart-empty" (click)=like(news.id)></ion-icon>
+                    <ion-icon *ngIf="news_liked" name="heart" (click)=unlike(news.id)></ion-icon>
+                    {{ news.like_count }}
+                </ion-col>
+                <ion-col>
+                    <ion-icon *ngIf="!news_bookmarked" name="star-outline" (click)=save_bookmark(news.id)></ion-icon>
+                    <ion-icon *ngIf="news_bookmarked" name="bookmark" (click)=discard_bookmark(news.id)></ion-icon>
+                </ion-col>
+
+                <ion-col>
+                    <ion-icon (click)=share(news.id) name="paper-plane"></ion-icon> 
+                    {{ news.share_count }}
+                </ion-col>
+
+            </ion-row>
+        </ion-grid>
+    </ion-footer>
+
+</ion-content>
+
+<ion-content *ngIf="!dataAvailable">
+    <!-- <img *ngIf="news.image_url == null" src="/assets/dd.png" alt="" style="width:100%;height: 280px;"/> -->
+    <div style="width:100%;height: 280px;">
+        <ion-skeleton-text animated></ion-skeleton-text>
+    </div>
+    <ion-card class="welcome-card" >
+
+        <ion-item lines="none">
+            <ion-avatar slot="start">
+                <ion-skeleton-text animated></ion-skeleton-text>
+            </ion-avatar>
+            <ion-label>
+                <ion-skeleton-text animated></ion-skeleton-text>
+                <p > <ion-skeleton-text animated style="width: 40%"></ion-skeleton-text></p>
+            </ion-label>
+        </ion-item>
+
+
+        <ion-card-content class="ion-padding">
+            <h3><ion-skeleton-text animated ></ion-skeleton-text></h3>
+            <p><ion-skeleton-text animated ></ion-skeleton-text></p>
+            <p><ion-skeleton-text animated ></ion-skeleton-text></p>
+            <p><ion-skeleton-text animated ></ion-skeleton-text></p>
+            <p><ion-skeleton-text animated ></ion-skeleton-text></p>
+            <p><ion-skeleton-text animated ></ion-skeleton-text></p>
+            <p><ion-skeleton-text animated ></ion-skeleton-text></p>
+            <p><ion-skeleton-text animated ></ion-skeleton-text></p>
+            <p><ion-skeleton-text animated style="width: 80%" ></ion-skeleton-text></p>
+            
+            <ion-list style="margin-top:10px">
+                <h3>You may like </h3>
+
+                <ion-item *ngFor="let v of related_news" routerLink="/postdetails/{{  v.id }}">
+                    <ion-thumbnail slot="start">
+                        <img *ngIf="v.source_name != ''" height="100" src="{{ v.source_name }}">
+                        <img *ngIf="v.source_name == ''" height="100" src="/assets/avatar.svg">
+                    </ion-thumbnail>
+                    <ion-label>{{ v.title }}</ion-label>
+                </ion-item>
+
+            </ion-list>
+
+        </ion-card-content>
+
+
+    </ion-card>
+    <ion-footer class="spaceFooter">
+        <ion-grid>
+            <ion-row>
+                <ion-col>
+                    <ion-icon *ngIf="!news_liked" name="heart-empty" (click)=like(news.id)></ion-icon>
+                    <ion-icon *ngIf="news_liked" name="heart" (click)=unlike(news.id)></ion-icon>
+                    {{ news.like_count }}
+                </ion-col>
+                <ion-col>
+                    <ion-icon *ngIf="!news_bookmarked" name="star-outline" (click)=save_bookmark(news.id)></ion-icon>
+                    <ion-icon *ngIf="news_bookmarked" name="bookmark" (click)=discard_bookmark(news.id)></ion-icon>
+                </ion-col>
+
+                <ion-col>
+                    <ion-icon (click)=share(news.id) name="paper-plane"></ion-icon> 
+                    {{ news.share_count }}
+                </ion-col>
+
+            </ion-row>
+        </ion-grid>
+    </ion-footer>
+
+</ion-content>

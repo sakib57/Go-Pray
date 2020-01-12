@@ -1,0 +1,123 @@
+<ion-tabs>
+    <ion-tab-bar slot="bottom" color="primary">
+        <ion-tab-button tab="tab1">
+            <ion-icon name="home"></ion-icon>
+            <ion-label>Home</ion-label>
+        </ion-tab-button>
+        <!-- <ion-tab-button tab="tab2">
+            <ion-icon name="book"></ion-icon>
+            <ion-label>Quran</ion-label>
+        </ion-tab-button> -->
+        <ion-tab-button tab="tab3">
+            <ion-icon name="clock"></ion-icon>
+            <ion-label>Prayer</ion-label>
+        </ion-tab-button>
+        <ion-tab-button tab="tab6">
+            <ion-icon name="navigate"></ion-icon>
+            <ion-label>Go Pray</ion-label>
+        </ion-tab-button>
+        <ion-tab-button tab="tab4">
+            <ion-icon name="compass"></ion-icon>
+            <ion-label>Qiblat</ion-label>
+        </ion-tab-button>
+        <ion-tab-button tab="tab5">
+            <ion-icon name="person"></ion-icon>
+            <ion-label>Me</ion-label>
+        </ion-tab-button>
+    </ion-tab-bar>
+</ion-tabs>
+<!-- fab placed in the center of the content with a list on each side -->
+<ion-fab vertical="bottom" horizontal="end" edge slot="fixed">
+    <ion-fab-button class="ss_menubtn">
+        <ion-icon name="options"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="start">
+        <ion-grid>
+            <ion-row class="ion-justify-content-center">
+                <ion-col routerLink="/tabs/tab3">
+                    <ion-img src="assets/icon_clock.png"></ion-img>
+                    Prayer time
+                </ion-col>
+                <ion-col routerLink="/tabs/tab4">
+                    <ion-img src="assets/icon_kaaba.png"></ion-img>
+                    Qiblat
+                </ion-col>
+                <ion-col routerLink="/prayerlist">
+                    <ion-img src="assets/icon_muslim-praying.png"></ion-img>
+                    Prayer
+                </ion-col>
+            </ion-row>
+            <ion-row class="ion-justify-content-center">
+                <ion-col routerLink="/names99">
+                    <ion-img src="assets/icon_clock.png"></ion-img>
+                    99 Names
+                </ion-col>
+                <ion-col routerLink="/tabs">
+                    <ion-img src="assets/icon_placeholder.png"></ion-img>
+                    Directory
+                </ion-col>
+                <ion-col routerLink="/shahadah">
+                    <ion-img src="assets/icon_clock.png"></ion-img>
+                    Shahadah
+                </ion-col>
+            </ion-row>
+            <!-- 
+            <ion-row class="ion-justify-content-center">
+                <ion-col routerLink="/tabs/tab3">
+                    <ion-img src="assets/icon_clock.png"></ion-img>
+                    Prayer time
+                </ion-col>
+                <ion-col routerLink="/tabs/tab4">
+                    <ion-img src="assets/icon_kaaba.png"></ion-img>
+                    Qiblat
+                </ion-col>
+                <ion-col routerLink="/tabs/tab2">
+                    <ion-img src="assets/icon_reading-quran.png"></ion-img>
+                    Al-Quran
+                </ion-col>
+            </ion-row>
+            <ion-row class="ion-justify-content-center">
+                <ion-col routerLink="/prayerlist">
+                    <ion-img src="assets/icon_muslim-praying.png"></ion-img>
+                    Prayer
+                </ion-col>
+                <ion-col routerLink="/doa">
+                    <ion-img src="assets/icon_islamic-pray.png"></ion-img>
+                    Doa
+                </ion-col>
+                <ion-col routerLink="/names99">
+                    <ion-img src="assets/icon_clock.png"></ion-img>
+                    99 Names
+                </ion-col>
+            </ion-row>
+            <ion-row class="ion-justify-content-center">
+                <ion-col routerLink="/tasbih">
+                    <ion-img src="assets/icon_prayer-beads.png"></ion-img>
+                    Tasbih
+                </ion-col>
+                <ion-col routerLink="/shahadah">
+                    <ion-img src="assets/icon_clock.png"></ion-img>
+                    Shahadah
+                </ion-col>
+                <ion-col routerLink="/hijricalender">
+                    <ion-img src="assets/icon_calendar.png"></ion-img>
+                    Hijri Calendar
+                </ion-col>
+            </ion-row>
+            <ion-row class="ion-justify-content-center">
+                <ion-col routerLink="/zakat">
+                    <ion-img src="assets/icon_give-money.png"></ion-img>
+                    Zakat
+                </ion-col>
+                <ion-col routerLink="/tabs">
+                    <ion-img src="assets/icon_placeholder.png"></ion-img>
+                    Directory
+                </ion-col>
+                <ion-col>
+                    <ion-img src="assets/icon_postcards.png"></ion-img>
+                    Postcard
+                </ion-col>
+            </ion-row> -->
+        </ion-grid>
+    </ion-fab-list>
+</ion-fab>

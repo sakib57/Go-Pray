@@ -1,0 +1,20 @@
+.ss_btn {
+    margin: 30px auto;
+    height: 150px;
+    width: 150px;
+    text-align: center;
+    line-height: 150px;
+    font-size: 24px;
+    border-radius: 50%;
+    button {
+        border-radius: 50% !important;
+    }
+}
+
+ion-card {
+    border: 2px solid #10dc60;
+    ion-card-content {
+        font-size: 30px;
+        color: #10dc60;
+    }
+}

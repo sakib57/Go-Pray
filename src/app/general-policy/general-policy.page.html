@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-toolbar color="success">
+      <ion-buttons slot="start">
+          <ion-back-button defaultHref="/privacy" icon="arrow-back"></ion-back-button>
+      </ion-buttons>
+    <ion-title>Privacy Policy</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" *ngIf="dataAvailable">
+    <h4> {{ policy[0]['title'] }}</h4>
+    <p>{{ policy[0]['description'] }}</p>
+</ion-content>

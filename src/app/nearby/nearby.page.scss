@@ -1,0 +1,28 @@
+ion-item {
+    padding-top: 10px;
+    .ss_arrows {
+        color: #c0c0c0;
+    }
+    .ios.ss_arrows {
+        display: none
+    }
+    background: rgba(255, 255, 255, .7);
+    --background: rgba(255, 255, 255, .7);
+    h4 {
+        margin: 0;
+        font-size: 16px;
+        color: #333;
+        span {
+            font-size: 14px;
+            color: #a7a7a7;
+        }
+    }
+    p {
+        font-size: 14px;
+        color: #a7a7a7;
+        margin: 0;
+    }
+    ion-icon {
+        --color: #666;
+    }
+}

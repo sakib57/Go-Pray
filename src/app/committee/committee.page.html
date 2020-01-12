@@ -1,0 +1,23 @@
+<ion-header>
+    <ion-toolbar color="success">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/" icon="arrow-back"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Member Info</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="dataAvailable">
+    <ion-card  style="box-shadow: none">
+        <ion-card-header>
+          <ion-avatar style="width: 80%;height:240px;margin: auto">
+              <img style="box-shadow:-5px 8px 8px #888888" src="http://optest.therssoftware.com/prayer_app/{{ committee_member.profile_image }}" alt="" />
+          </ion-avatar>
+        </ion-card-header>
+        <ion-card-content class="ion-text-center">
+            <h1> <strong> {{ committee_member.name }}</strong></h1>
+            <h2>{{ committee_member.title }}</h2>
+            <p>{{ committee_member.bio }}</p>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

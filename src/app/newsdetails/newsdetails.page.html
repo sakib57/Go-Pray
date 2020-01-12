@@ -1,0 +1,31 @@
+<ion-header>
+    <ion-toolbar color="success">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="newslist/{{ mosque_id }}" icon="arrow-back"></ion-back-button>
+        </ion-buttons>
+        <ion-title>News Details </ion-title>
+
+        <ion-buttons slot="end">
+            <ion-button (click)=" OnDelete()">
+                <ion-icon slot="icon-only" name="trash"></ion-icon>
+            </ion-button>
+            
+        </ion-buttons>
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" *ngIf="!isloading">
+    <ion-card >
+        <img src="http://optest.therssoftware.com/prayer_app/{{ news.news_image }}" />
+        <ion-card-header>
+            <ion-card-subtitle>{{ news.sub_title }}</ion-card-subtitle>
+            <ion-card-title> {{ news.title }}</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+            {{ news.news }}
+        </ion-card-content>
+    </ion-card>
+    <ion-button routerLink="/newsedit/{{ news.id }}" [queryParams]="{mosque_id:mosque_id}" color="primary">Edit</ion-button>
+</ion-content>

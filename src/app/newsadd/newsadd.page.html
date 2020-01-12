@@ -1,0 +1,56 @@
+<ion-header>
+    <ion-toolbar color="success">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="newslist/{{ mosque_id }}?notice_flag={{ notice_flag }}" icon="arrow-back"></ion-back-button>
+        </ion-buttons>
+        <ion-title>News Add </ion-title>
+
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+    <form #form="ngForm" (ngSubmit)="onsubmit(form)">
+        <ion-item>
+            <ion-label position="stacked">Title</ion-label>
+            <ion-input 
+                name="title"
+                type="text" 
+                placeholder="title" 
+                [ngModel] 
+                required
+            ></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="stacked">Subtitle</ion-label>
+            <ion-input 
+            name="sub_title"
+            type="text" 
+            placeholder="sub title" 
+            [ngModel]
+            required
+            ></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="stacked">Description</ion-label>
+            <ion-textarea 
+                rows="6" cols="20" 
+                name="news"
+                type="text" 
+                placeholder="description" 
+                [ngModel]
+                required
+            ></ion-textarea>
+        </ion-item>
+        <ion-item>
+            <img [src]=base64img class="square" *ngIf="base64img!=''">
+            <ion-button (click)="openActionSheet()">Chose Image</ion-button>
+        </ion-item>
+        
+
+        <div class="ion-padding">
+            <ion-button type="submit" color="success">Save</ion-button>
+        </div>
+
+    </form>
+</ion-content>

@@ -1,0 +1,76 @@
+.ion-cards-heading {
+    margin: 0px !important;
+    border-radius: 0;
+    position: relative;
+
+    ion-card-content {
+        color: #fff;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        z-index: 100;
+        bottom: 0;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
+
+        ion-searchbar {
+            --clear-button-color: #fff;
+            --cancel-button-color: var(--ion-color-primary, #3880ff);
+            --color: #fff;
+            --icon-color: #fff;
+            --background: transparent;
+            border-radius: 50px;
+            border: 1px solid #fff;
+            height: 42px;
+        }
+
+        h4 {
+            font-size: 30px;
+            margin-top: 20px;
+        }
+    }
+}
+
+.pr_live {
+    position: absolute;
+    top: 45%;
+    right: 0;
+    color: #2aaf03;
+    font-size: 14px;
+    font-weight: bold;
+    background: #fff;
+    padding: 3px;
+    z-index: 999;
+    left: 0;
+    width: 50px;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 6px;
+
+    span {
+        font-size: 40px;
+        line-height: 0;
+    }
+}
+
+ion-list-header {
+    background: #f1f1f1;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+
+    .notic_icon {
+        color: #3880ff;
+        font-size: 30px;
+    }
+}
+
+ion-item {
+    ion-icon {
+        color: #b5b5b5;
+    }
+
+    .active {
+        color: #3880ff;
+    }
+}

@@ -1,0 +1,82 @@
+ion-header {
+    ion-toolbar {
+        ion-select {
+            margin-right: 20px;
+        }
+        ion-icon {
+            padding-right: 20px;
+        }
+    }
+}
+
+ion-content {
+    ion-list {
+        ion-item {
+            position: relative;
+            ion-label {
+                padding-left: 10px;
+                .sura_arobi {
+                    color: #333;
+                    font-size: 20px;
+                    span {
+                        background: url(../../assets/islam.png) no-repeat;
+                        background-size: cover;
+                        height: 50px;
+                        width: 50px;
+                        line-height: 50px;
+                        display: inline-block;
+                        text-align: center;
+                        color: #e8c504;
+                    }
+                }
+                p {
+                    font-size: 14px;
+                    color: #589e74;
+                }
+                .ss_menu_q_list {
+                    width: 100%;
+                    background: rgba(0, 0, 0, .5);
+                    position: absolute;
+                    top: 0;
+                    width: 100%;
+                    left: 0px;
+                    right: 0;
+                    bottom: 0;
+                    color: #fff;
+                    ion-grid {
+                        height: 100%;
+                        ion-row {
+                            height: 100%;
+                            ion-col {
+                                text-align: center;
+                                ion-icon {
+                                    background: #0bce58;
+                                    color: #fff;
+                                    height: 25px;
+                                    width: 40px;
+                                    padding: 10px 2px;
+                                    border-radius: 3px;
+                                }
+                                ion-label {
+                                    padding-left: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.spaceFooter {
+    ion-grid {
+        background: #f9f9f9;
+        ion-col {
+            text-align: center;
+            ion-icon {
+                color: #10dc60;
+            }
+        }
+    }
+}

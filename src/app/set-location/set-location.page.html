@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Set Location</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div *ngIf="currentLoation != 'undefined'" text-center>
+    <p>Your Current Location</p>
+    <p> {{ locationShow }} </p>
+  </div>
+  <ion-toolbar>
+    
+    <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="filterItems($event)" (ionCancel)="onCancel($event)">
+    </ion-searchbar>
+
+    <ion-list *ngIf="isItemAvailable">
+      <ion-item *ngFor="let item of alllocation" (click)="locationClick(item)">
+        {{ item.description }}
+      </ion-item>
+    </ion-list>
+  </ion-toolbar>
+  <br>
+  <br>
+  <br>
+  <div text-center>
+    <ion-button color="primary" (click)="setLocation()">Set location</ion-button>
+  </div>
+</ion-content>

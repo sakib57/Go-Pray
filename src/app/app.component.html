@@ -1,0 +1,67 @@
+<ion-app>
+    <ion-split-pane contentId="menu-content">
+        <!--  our side menu  -->
+        <ion-menu contentId="menu-content">
+            <ion-header>
+                <ion-toolbar color="success">
+                    <ion-title>Menu</ion-title>
+                </ion-toolbar>
+            </ion-header>
+            <ion-list>
+                <ion-item routerLink="/tabs/tab3">
+                    <ion-img src="assets/icon_clock.png"></ion-img>
+                    <ion-label> Prayer time</ion-label>
+                </ion-item>
+                <ion-item routerLink="/tabs/tab4">
+                    <ion-img src="assets/icon_kaaba.png"></ion-img>
+                    <ion-label> Qiblat</ion-label>
+                </ion-item>
+                <ion-item routerLink="/tabs/tab2">
+                    <ion-img src="assets/icon_reading-quran.png"></ion-img>
+                    <ion-label> Al-Quran</ion-label>
+                </ion-item>
+                <ion-item routerLink="/prayerlist">
+                    <ion-img src="assets/icon_muslim-praying.png"></ion-img>
+                    <ion-label>Prayer</ion-label>
+                </ion-item>
+                <ion-item routerLink="/doa">
+                    <ion-img src="assets/icon_islamic-pray.png"></ion-img>
+                    <ion-label>Doa</ion-label>
+                </ion-item>
+                <ion-item routerLink="/names99">
+                    <ion-img src="assets/icon_clock.png"></ion-img>
+                    <ion-label> 99 Names</ion-label>
+                </ion-item>
+                <ion-item routerLink="/tasbih">
+                    <ion-img src="assets/icon_prayer-beads.png"></ion-img>
+                    <ion-label> Tasbih</ion-label>
+                </ion-item>
+                <ion-item routerLink="/shahadah">
+                    <ion-img src="assets/icon_clock.png"></ion-img>
+                    <ion-label>Shahadah</ion-label>
+                </ion-item>
+                <ion-item routerLink="/hijricalender">
+                    <ion-img src="assets/icon_calendar.png"></ion-img>
+                    <ion-label>Hijri Calendar</ion-label>
+                </ion-item>
+                <ion-item routerLink="/zakat">
+                    <ion-img src="assets/icon_give-money.png"></ion-img>
+                    <ion-label>Zakat</ion-label>
+                </ion-item>
+                <ion-item routerLink="/tabs">
+                    <ion-img src="assets/icon_placeholder.png"></ion-img>
+                    <ion-label>Directory</ion-label>
+                </ion-item>
+                <ion-item>
+                    <ion-img src="assets/icon_postcards.png"></ion-img>
+                    <ion-label>Postcard</ion-label>
+                </ion-item>
+
+            </ion-list>
+        </ion-menu>
+
+        <!-- the main content -->
+        <ion-router-outlet id="menu-content"></ion-router-outlet>
+    </ion-split-pane>
+
+</ion-app>

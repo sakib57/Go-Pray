@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar color="success">
+      <ion-buttons slot="start">
+          <ion-back-button defaultHref="/tabs/tab5" icon="arrow-back"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Privacy Policy</ion-title>
+
+      
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+
+
+  <ion-list>
+    <ion-item routerLink="/general-policy" detail>Privacy Policy</ion-item>
+    <ion-item routerLink="/user-policy" detail> User Agreement</ion-item>
+    <ion-item (click)="moreOption()" detail> More Options</ion-item>
+  </ion-list>
+  
+     
+</ion-content>

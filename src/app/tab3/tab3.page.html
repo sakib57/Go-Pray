@@ -1,0 +1,144 @@
+<ion-content>
+    <ion-card class="ion-cards-heading" *ngIf="showPrefareble == false">
+        <img src="/assets/m3.png" alt="" />
+        
+        <ion-card-content>
+            <h4 *ngIf="upcomingWakt == 'Fajr'">
+                {{ fajr_left }}
+                <ion-icon name="notifications"></ion-icon>
+            </h4>
+            <h4 *ngIf="upcomingWakt == 'Zuhr'">
+                {{ zuhr_left }}
+                <ion-icon name="notifications"></ion-icon>
+            </h4>
+            <h4 *ngIf="upcomingWakt == 'Asr'">
+                {{ asr_left }}
+                <ion-icon name="notifications"></ion-icon>
+            </h4>
+            <h4 *ngIf="upcomingWakt == 'Maghrib'">
+                {{ maghrib_left }}
+                <ion-icon name="notifications"></ion-icon>
+            </h4>
+            <h4 *ngIf="upcomingWakt == 'Isha'">
+                {{ isha_left }}
+                <ion-icon name="notifications"></ion-icon>
+            </h4>
+            <p style="font-size: 18px">Left until {{ upcomingWakt }} - {{ timeZone }}</p>
+            <div class="ion-text-center ion-padding" *ngIf="upcomingWakt == 'Fajr'" style="font-size: 16px">
+                <ion-icon name="sunny"></ion-icon>
+                <br /> {{ fajar_time }}
+            </div>
+            <div class="ion-text-center ion-padding" *ngIf="upcomingWakt == 'Zuhr'" style="font-size: 16px">
+                <ion-icon name="sunny"></ion-icon>
+                <br /> {{ zuhr_time }}
+            </div>
+            <div class="ion-text-center ion-padding" *ngIf="upcomingWakt == 'Asr'" style="font-size: 16px">
+                <ion-icon name="sunny"></ion-icon>
+                <br /> {{ asr_time }}
+            </div>
+            <div class="ion-text-center ion-padding" *ngIf="upcomingWakt == 'Maghrib'" style="font-size: 16px">
+                <ion-icon name="sunny"></ion-icon>
+                <br /> {{ maghrib_time }}
+            </div>
+            <div class="ion-text-center ion-padding" *ngIf="upcomingWakt == 'Isha'" style="font-size: 16px">
+                <ion-icon name="sunny"></ion-icon>
+                <br /> {{ isha_time }}
+            </div>
+        </ion-card-content>
+    </ion-card>
+    <ion-card class="ion-cards-heading" *ngIf="showPrefareble != false">
+        <img src="http://optest.therssoftware.com/prayer_app/{{ MosqueImage }}" alt="" />
+        <div class="pr_live" (click)="openLiveVideo()">
+            <span>.</span> Live
+        </div>
+        <ion-card-content>
+            <h4>02:01:12
+                <ion-icon name="notifications"></ion-icon>
+            </h4>
+            <h5>{{ MosqueName }}</h5>
+            <div text-center padding>
+                <ion-icon name="sunny"></ion-icon>
+                <br /> 18:47
+            </div>
+        </ion-card-content>
+    </ion-card>
+    <!-- List of Sliding Items -->
+    <ion-list>
+        <ion-item lines="none" class="ion-text-center" *ngIf="timeZone">
+            <ion-label style="margin-bottom:0px;">
+                {{ timeZone }}
+            </ion-label>
+        </ion-item>
+        <ion-item lines="none" class="ion-text-center">
+            <ion-label style="margin-top:0px;">
+               {{ currentDate | date }}
+            </ion-label>
+        </ion-item>
+        <ion-list-header>
+            <ion-label>Persistent Notification </ion-label>
+            <ion-toggle color="secondary"></ion-toggle>
+        </ion-list-header>
+        <ion-list-header>
+            <ion-label>All prayer Time </ion-label>
+            <ion-icon *ngIf="all_silent" (click)="makeAllSilent()" class="notic_icon" name="notifications-off"></ion-icon>
+            <ion-icon *ngIf="!all_silent" (click)="makeAllSilent()" class="notic_icon" name="notifications"></ion-icon>
+        </ion-list-header>
+        <ion-item (click)="setAlerm('Imsak')">
+            <img src="assets/imsak_icon.png" height="30" slot="start" />
+            <ion-label>Imsak</ion-label>
+            <p> {{ imsak_time }} </p>
+            <ion-icon *ngIf="!all_silent" slot="end" [class.active]="imsakAlermStatus > 1" name="notifications"></ion-icon>
+            <ion-icon *ngIf="all_silent && imsakAlermStatus > 1" slot="end" class="active" name="notifications-off"></ion-icon>
+            <ion-icon *ngIf="all_silent && imsakAlermStatus <= 1" slot="end" name="notifications-off"></ion-icon>
+        </ion-item>
+        <ion-item (click)="setAlerm('Fajr')">
+            <img src="assets/moon.png" height="30" slot="start" />
+            <ion-label>Fajr</ion-label>
+            <p>{{ fajar_time }}</p>
+            <ion-icon *ngIf="!all_silent" slot="end" [class.active]="fajrAlermStatus > 1" name="notifications"></ion-icon>
+            <ion-icon *ngIf="all_silent && fajrAlermStatus > 1" slot="end" class="active" name="notifications-off"></ion-icon>
+            <ion-icon *ngIf="all_silent && fajrAlermStatus <= 1" slot="end" name="notifications-off"></ion-icon>
+        </ion-item>
+        <ion-item  (click)="setAlerm('Sunrise')">
+            <img src="assets/imsak_icon.png" height="30" slot="start" />
+            <ion-label>Sunrise</ion-label>
+            <p>{{ sunrise_time }}</p>
+            <ion-icon *ngIf="!all_silent" slot="end" [class.active]="sunriseAlermStatus > 1"  name="notifications"></ion-icon>
+            <ion-icon *ngIf="all_silent && sunriseAlermStatus > 1" slot="end" class="active" name="notifications-off"></ion-icon>
+            <ion-icon *ngIf="all_silent && sunriseAlermStatus <= 1" slot="end" name="notifications-off"></ion-icon>
+        </ion-item>
+        <ion-item  (click)="setAlerm('Zuhr')">
+            <img src="assets/sun.png" height="30" slot="start" />
+            <ion-label>Zuhr</ion-label>
+            <p>{{ zuhr_time }}</p>
+            <!-- <p>{{ Dhuhr }}</p> -->
+            <ion-icon *ngIf="!all_silent" slot="end" [class.active]="zuhrAlermStatus > 1" name="notifications"></ion-icon>
+            <ion-icon *ngIf="all_silent && zuhrAlermStatus > 1" slot="end" class="active" name="notifications-off"></ion-icon>
+            <ion-icon *ngIf="all_silent && zuhrAlermStatus <= 1" slot="end" name="notifications-off"></ion-icon>
+        </ion-item>
+        <ion-item  (click)="setAlerm('Asr')">
+            <img src="assets/big-sun-shining.png" height="30" slot="start" />
+            <ion-label>Asar</ion-label>
+            <p>{{ asr_time }}</p>
+            <ion-icon *ngIf="!all_silent" slot="end" [class.active]="asrAlermStatus > 1" name="notifications"></ion-icon>
+            <ion-icon *ngIf="all_silent && asrAlermStatus > 1" slot="end" class="active" name="notifications-off"></ion-icon>
+            <ion-icon *ngIf="all_silent && asrAlermStatus <= 1" slot="end" name="notifications-off"></ion-icon>
+        </ion-item>
+        <ion-item  (click)="setAlerm('Maghrib')">
+            <img src="assets/sunset.png" height="30" slot="start" />
+            <ion-label>Maghrib</ion-label>
+            <p>{{ maghrib_time }}</p>
+            <ion-icon *ngIf="!all_silent" slot="end" [class.active]="maghribAlermStatus > 1" name="notifications"></ion-icon>
+            <ion-icon *ngIf="all_silent && maghribAlermStatus > 1" slot="end" class="active" name="notifications-off"></ion-icon>
+            <ion-icon *ngIf="all_silent && maghribAlermStatus <= 1" slot="end" name="notifications-off"></ion-icon>
+        </ion-item>
+        <ion-item  (click)="setAlerm('Isha')">
+            <img src="assets/asha.png" height="30" slot="start" />
+            <ion-label>Isha</ion-label>
+            <p>{{ isha_time }}</p>
+            <ion-icon *ngIf="!all_silent" slot="end" [class.active]="ishaAlermStatus > 1" name="notifications"></ion-icon>
+            <ion-icon *ngIf="all_silent && ishaAlermStatus > 1" slot="end" class="active" name="notifications-off"></ion-icon>
+            <ion-icon *ngIf="all_silent && ishaAlermStatus <= 1" slot="end" name="notifications-off"></ion-icon>
+        </ion-item>
+    </ion-list>
+</ion-content>

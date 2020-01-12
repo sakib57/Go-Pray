@@ -1,0 +1,71 @@
+import { NgModule } from '@angular/core';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+  { path: '', loadChildren: './tabs/tabs.module#TabsPageModule' },
+  { path: 'tab2', loadChildren: './tab2/tab2.module#Tab2PageModule' },
+  { path: 'tab3', loadChildren: './tab3/tab3.module#Tab3PageModule' }, 
+  { path: 'tab4', loadChildren: './tab4/tab4.module#Tab4PageModule' },
+  { path: 'tab5', loadChildren: './tab5/tab5.module#Tab5PageModule' },
+   { path: 'tab6', loadChildren: './tab6/tab6.module#Tab6PageModule' },
+  { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
+  { path: 'setting', loadChildren: './setting/setting.module#SettingPageModule' },
+ 
+  { path: 'nearby', loadChildren: './nearby/nearby.module#NearbyPageModule' },
+  { path: 'mosquedetails/:mosqueId', loadChildren: './mosquedetails/mosquedetails.module#MosquedetailsPageModule' },
+  { path: 'postdetails/:id', loadChildren: './postdetails/postdetails.module#PostdetailsPageModule' },
+  { path: 'sura/:id', loadChildren: './sura/sura.module#SuraPageModule' },
+  { path: 'adhannotification', loadChildren: './adhannotification/adhannotification.module#AdhannotificationPageModule' }, 
+  { path: 'accountsettings', loadChildren: './accountsettings/accountsettings.module#AccountsettingsPageModule' },
+  { path: 'privacy', loadChildren: './privacy/privacy.module#PrivacyPageModule' },
+  { path: 'prayerlist', loadChildren: './prayerlist/prayerlist.module#PrayerlistPageModule' },
+  { path: 'doa', loadChildren: './doa/doa.module#DoaPageModule' },
+  { path: 'names99', loadChildren: './names99/names99.module#Names99PageModule' },
+  { path: 'tasbih', loadChildren: './tasbih/tasbih.module#TasbihPageModule' },
+  { path: 'shahadah', loadChildren: './shahadah/shahadah.module#ShahadahPageModule' },
+  { path: 'hijricalender', loadChildren: './hijricalender/hijricalender.module#HijricalenderPageModule' },
+  { path: 'zakat', loadChildren: './zakat/zakat.module#ZakatPageModule' },
+  { path: 'doadetails', loadChildren: './doadetails/doadetails.module#DoadetailsPageModule' },
+  { path: 'prayerdetails', loadChildren: './prayerdetails/prayerdetails.module#PrayerdetailsPageModule' },
+  { path: 'set-location', loadChildren: './set-location/set-location.module#SetLocationPageModule' },
+  { path: 'testing', loadChildren: './testing/testing.module#TestingPageModule' },
+  { path: 'authorlogin', loadChildren: './authorlogin/authorlogin.module#AuthorloginPageModule' },
+  { path: 'mosquedashboard/:id', loadChildren: './mosquedashboard/mosquedashboard.module#MosquedashboardPageModule' },
+  { path: 'authorregister', loadChildren: './authorregister/authorregister.module#AuthorregisterPageModule' },
+  { path: 'selectprayertime/:id', loadChildren: './selectprayertime/selectprayertime.module#SelectprayertimePageModule' },
+  { path: 'selecttheme/:id', loadChildren: './selecttheme/selecttheme.module#SelectthemePageModule' },
+  { path: 'addnotification/:id', loadChildren: './addnotification/addnotification.module#AddnotificationPageModule' },
+  { path: 'editnotification/:id', loadChildren: './editnotification/editnotification.module#EditnotificationPageModule' },
+  { path: 'notification/:id', loadChildren: './notification/notification.module#NotificationPageModule' },
+  { path: 'doalist/:id', loadChildren: './doalist/doalist.module#DoalistPageModule' },
+  { path: 'doaadd', loadChildren: './doaadd/doaadd.module#DoaaddPageModule' },
+  { path: 'doaedit', loadChildren: './doaedit/doaedit.module#DoaeditPageModule' },
+  { path: 'profileinfo/:id', loadChildren: './profileinfo/profileinfo.module#ProfileinfoPageModule' },
+  { path: 'noticedetails/:id', loadChildren: './noticedetails/noticedetails.module#NoticedetailsPageModule' },
+  { path: 'duadetails', loadChildren: './duadetails/duadetails.module#DuadetailsPageModule' },
+  { path: 'newslist/:id', loadChildren: './newslist/newslist.module#NewslistPageModule' },
+  { path: 'newsadd/:id', loadChildren: './newsadd/newsadd.module#NewsaddPageModule' },
+  { path: 'newsedit/:id', loadChildren: './newsedit/newsedit.module#NewseditPageModule' },
+  { path: 'newsdetails/:id', loadChildren: './newsdetails/newsdetails.module#NewsdetailsPageModule' },
+  { path: 'google-map', loadChildren: './google-map/google-map.module#GoogleMapPageModule' },
+  { path: 'user-mosque-list', loadChildren: './user-mosque-list/user-mosque-list.module#UserMosqueListPageModule' },
+  { path: 'general-policy', loadChildren: './general-policy/general-policy.module#GeneralPolicyPageModule' },
+  { path: 'user-policy', loadChildren: './user-policy/user-policy.module#UserPolicyPageModule' },
+  { path: 'notify', loadChildren: './notify/notify.module#NotifyPageModule' },
+  { path: 'committee/:id', loadChildren: './committee/committee.module#CommitteePageModule' },
+  { path: 'committee-members/:id', loadChildren: './committee-members/committee-members.module#CommitteeMembersPageModule' },
+  { path: 'notice', loadChildren: './notice/notice.module#NoticePageModule' },
+  { path: 'notification-detail/:id', loadChildren: './notification-detail/notification-detail.module#NotificationDetailPageModule' },
+  { path: 'map2', loadChildren: './map2/map2.module#Map2PageModule' },
+  { path: 'notify-detail/:id', loadChildren: './notify-detail/notify-detail.module#NotifyDetailPageModule' },
+  { path: 'searched-news', loadChildren: './searched-news/searched-news.module#SearchedNewsPageModule' },
+  { path: 'sign-in', loadChildren: './sign-in/sign-in.module#SignInPageModule' },
+  { path: 'sign-up', loadChildren: './sign-up/sign-up.module#SignUpPageModule' }
+]; 
+@NgModule({
+  imports: [
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+  ],
+  exports: [RouterModule]
+})
+export class AppRoutingModule {}

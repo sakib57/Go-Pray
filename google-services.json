@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "198611313401",
+    "firebase_url": "https://prayerapp-1566025617981.firebaseio.com",
+    "project_id": "prayerapp-1566025617981",
+    "storage_bucket": "prayerapp-1566025617981.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:198611313401:android:3c674397cbe02afe",
+        "android_client_info": {
+          "package_name": "io.ionic.prayer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "198611313401-msrlhhrb5iuokfe75b6nf0otua7ohsnr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBp7Cagb4rdn5oVBYfXNqG2kh3l3b5yUyY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "198611313401-msrlhhrb5iuokfe75b6nf0otua7ohsnr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,7 @@
+{
+  "name": "gomuslim",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

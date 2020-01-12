@@ -1,0 +1,53 @@
+<ion-header>
+    <ion-toolbar color="success">
+        <ion-buttons slot="start">
+            <ion-back-button text="" defaultHref="user-mosque-list" icon="arrow-back"></ion-back-button>
+        </ion-buttons>
+        <ion-title>{{ mosque_name }}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+    <ion-card class="ion-cards-heading" *ngIf="mosque_name">
+        <img src="http://optest.therssoftware.com/prayer_app/{{ moaque_img }}" alt="" />
+        
+    </ion-card>
+    <ion-list *ngIf="mosque_name">
+        <ion-item routerLink="/selectprayertime/{{ mosque_id }}" [queryParams]="{ notice_flag : notice_flag }">
+            <ion-icon name="clock" slot="start"></ion-icon>
+            <ion-label>Select Prayer time</ion-label>
+        </ion-item>
+        <ion-item routerLink="/notification/{{ mosque_id }}">
+            <ion-icon name="create" slot="start"></ion-icon>
+            <ion-label>Add/Edit Notice </ion-label>
+        </ion-item>
+        <!-- <ion-item routerLink="/doalist/{{ mosque_id }}">
+            <ion-icon slot="start" name="bookmark"></ion-icon>
+            <ion-label>Add/Edit Doa </ion-label>
+        </ion-item> -->
+        <ion-item routerLink="/selecttheme/{{ mosque_id }}">
+            <ion-icon slot="start" name="albums"></ion-icon>
+            <ion-label>Theme Settings</ion-label>
+        </ion-item>
+        <ion-item routerLink="/profileinfo/{{ mosque_id }}">
+            <ion-icon slot="start" name="settings"></ion-icon>
+            <ion-label>Profile Settings</ion-label>
+        </ion-item>
+
+        <ion-item routerLink="/newslist/{{ mosque_id }}">
+            <ion-icon slot="start" name="book"></ion-icon>
+            <ion-label>News</ion-label>
+        </ion-item>
+        <ion-item routerLink="/committee-members/{{ mosque_id }}">
+            <ion-icon slot="start" name="person"></ion-icon>
+            <ion-label>Committee</ion-label>
+        </ion-item>
+        <ion-item (click)="goLive()">
+            <ion-icon slot="start" name="videocam"></ion-icon>
+            <ion-label>Go to live</ion-label>
+        </ion-item>
+
+    </ion-list>
+    <h3 class="ion-text-center" style="margin-top: 50px" *ngIf="!mosque_name && !isloading">No data found</h3>
+</ion-content>

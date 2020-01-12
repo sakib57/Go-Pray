@@ -1,0 +1,60 @@
+<ion-header>
+    <ion-toolbar color="success">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="newsdetails/{{ news.id }}?mosque_id={{ mosque_id }}" icon="arrow-back"></ion-back-button>
+        </ion-buttons>
+        <ion-title>News edit </ion-title>
+
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" *ngIf="dataAvailable && !isloading">
+    <form #form="ngForm" (ngSubmit)="onsubmit(form)">
+        <ion-item>
+            <ion-label position="stacked">Title</ion-label>
+            <ion-input 
+                name="title"
+                type="text" 
+                placeholder="title" 
+                [(ngModel)]="news.title" 
+                required
+            ></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="stacked">Subtitle</ion-label>
+            <ion-input 
+            name="sub_title"
+            type="text" 
+            placeholder="sub title" 
+            [(ngModel)]="news.sub_title" 
+            required
+            ></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="stacked">Description</ion-label>
+            <ion-textarea 
+                rows="6" cols="20" 
+                name="news"
+                type="text" 
+                placeholder="description" 
+                [(ngModel)]="news.news" 
+                required
+            ></ion-textarea>
+        </ion-item>
+        <ion-item>
+            <img [src]=base64img class="square" *ngIf="base64img!=''">
+            <ion-button (click)="openActionSheet()">Chose Image</ion-button>
+        </ion-item>
+        
+
+        <div class="ion-padding">
+            <ion-button type="submit" color="success">Update</ion-button>
+        </div>
+
+    </form>
+</ion-content>
+
+<ion-content *ngIf="!dataAvailable && !isloading">
+    <h3 style="margin-top:20px;text-align:center">Data unavailable</h3>
+</ion-content>

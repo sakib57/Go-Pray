@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar color="success">
+      <ion-buttons slot="start">
+          <ion-back-button defaultHref="notice" (click)="noticeList()" icon="arrow-back"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Notice Detail</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" *ngIf="dataAvailable">
+  <h3>{{ title }}</h3>
+  <p>{{ notice  }}</p>
+  <br/>
+</ion-content>

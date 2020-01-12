@@ -1,0 +1,30 @@
+ ion-card {
+     box-shadow: none;
+     img {
+         width: 100%;
+     }
+     padding-bottom: 100px;
+ }
+ 
+ .spaceFooter {
+     position: fixed;
+     width: 100%;
+     bottom: 0;
+     background: #fff;
+     ion-item {
+         ion-input {
+             border: 1px solid #ccc;
+             border-radius: 60px;
+             --padding-start: 10px;
+         }
+     }
+     ion-grid {
+         background: #f9f9f9;
+         ion-col {
+             text-align: center;
+             ion-icon {
+                 color: #10dc60;
+             }
+         }
+     }
+ }

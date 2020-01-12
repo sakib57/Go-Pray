@@ -1,0 +1,20 @@
+
+
+
+<ion-content>
+    <ion-item lines="none">
+        <ion-icon name="navigate"></ion-icon>
+        <ion-label>Dhaka,bangladesh</ion-label>
+    </ion-item>
+
+    <div text-center class="ion-margin-vertical">
+        <img  [@rotatedState]="{ value: rsstate, params: { angle: compas || 180 } }"  class="ion-margin-vertical" src="assets/dial.png" height="300">
+    </div>
+    <div text-center class="ion-margin-vertical">
+        <h1 class="">{{ Myangle }}° </h1>
+        <h1 class="">{{ compas }}° </h1>
+        <p>Kaaba , Mecca </p>
+        <p>Distance from Mekka 5174km</p>
+    </div>
+
+</ion-content>

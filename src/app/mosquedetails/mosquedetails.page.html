@@ -1,0 +1,213 @@
+<ion-header>
+    <ion-toolbar color="success">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/nearby" icon="arrow-back"></ion-back-button>
+        </ion-buttons>
+        <ion-title>{{ mosqueDetail.mosque_details.name }}</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-card class="ion-cards-heading">
+
+
+            <ion-slides pager="true" [options]="slideOpts">
+                <ion-slide>
+                        <!-- <img src="http://optest.therssoftware.com/prayer_app/{{ mosqueDetail.mosque_details.main_image }}" alt="" /> -->
+                        <!-- <ion-img src="http://optest.therssoftware.com/prayer_app/{{ mosqueDetail.mosque_details.main_image }}" alt=""></ion-img> -->
+                        <ion-img style="background-size:cover;height:200px" [src]="image" alt=""></ion-img>
+                       
+                </ion-slide>
+                <ion-slide *ngFor="let v of mosqueDetail.additional_images">
+                        <!-- <img src="http://optest.therssoftware.com/prayer_app/{{ v }}" alt="" /> -->
+                        <ion-img src="http://optest.therssoftware.com/prayer_app/{{ v }}" alt=""></ion-img>
+                </ion-slide>
+            </ion-slides>
+        <ion-card-content>
+            <h4>{{ mosqueDetail.mosque_details.name }} </h4>
+        </ion-card-content>
+        <div *ngIf="prefarble == mosqueDetail.mosque_details.id" class="pr_live" (click)="openLiveVideo()">
+            <span>.</span> Live
+        </div>
+        <div *ngIf="prefarble != mosqueDetail.mosque_details.id" class="non_preferable" (click)="selectedPrefarableMosjid(mosqueDetail.mosque_details.id)">
+            Set as Preffered
+        </div>
+        <div *ngIf="prefarble == mosqueDetail.mosque_details.id" class="pr_preferable">
+            <span>✓</span>
+            Preffered
+        </div>
+    </ion-card>
+    <ion-segment color="success" value="mosquedetails" [(ngModel)]="abc">
+        <ion-segment-button value="home" checked>
+            <ion-icon name="home"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button value="clock">
+            <ion-icon name="clock"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button value="compass">
+            <ion-icon name="compass"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button value="committee">
+            <ion-icon name="person"></ion-icon>
+        </ion-segment-button>
+    </ion-segment>
+    <div [ngSwitch]="abc">
+        <ion-list *ngSwitchCase="'home'" ngSelected="selected">
+            <ion-card>
+                <ion-card-header>
+                    <h4>About us</h4>
+                </ion-card-header>
+                <ion-card-content>
+                    <p> {{ mosqueDetail.mosque_details.description }}</p>
+                    <br />
+                    <ion-item color="primary" (click)="openMap()">
+                        <ion-icon name="map"></ion-icon>
+                        <p style="color:#fff"> &nbsp; Open in google map</p>
+                    </ion-item>
+                    <!-- <ion-item color="primary" (click)="openMap2()">
+                        <ion-icon name="map"></ion-icon>
+                        <p>Open in google map 2</p>
+                    </ion-item> -->
+                </ion-card-content>
+            </ion-card>
+            <ion-card>
+                <ion-card-header>
+                    <h4>Contact</h4>
+                </ion-card-header>
+                <ion-card-content>
+                    <p>Website: {{ mosqueDetail.mosque_details.website }} </p>
+                    <p>Email: {{ mosqueDetail.mosque_details.email }}</p>
+                    <p>Phone: {{ mosqueDetail.mosque_details.phone }}</p>
+                    <p>Facebook: {{ mosqueDetail.mosque_details.facebook }}</p>
+                </ion-card-content>
+            </ion-card>
+        </ion-list>
+        <ion-list *ngSwitchCase="'clock'">
+            <ion-card>
+                <ion-card-header>
+                    <h4>Iqamah Times</h4>
+                </ion-card-header>
+                <ion-card-content *ngIf="mosqueDetail.prayer_times != null">
+                    <ion-item>
+                        Fajr
+                        <div *ngIf="mosqueDetail.prayer_times" slot="end">
+                            <p *ngIf="mosqueDetail.prayer_times[0]['time'] != ''" >{{ mosqueDetail.prayer_times[0]['time'] }}</p>
+                        </div>
+                        
+                    </ion-item>
+                    <ion-item>
+                        Zuhr
+                        <div *ngIf="mosqueDetail.prayer_times" slot="end">
+                            <p *ngIf="mosqueDetail.prayer_times[1]['time'] != ''" >{{ mosqueDetail.prayer_times[1]['time'] }}</p>
+                        </div>
+                    </ion-item>
+                    <ion-item>
+                        Asr
+                        <div *ngIf="mosqueDetail.prayer_times" slot="end">
+                            <p *ngIf="mosqueDetail.prayer_times[2]['time'] != ''" >{{ mosqueDetail.prayer_times[2]['time'] }}</p>
+                        </div>
+                    </ion-item>
+                    <ion-item>
+                        Maghrib
+                        <div *ngIf="mosqueDetail.prayer_times" slot="end">
+                            <p *ngIf="mosqueDetail.prayer_times[3]['time'] != ''" >{{ mosqueDetail.prayer_times[3]['time'] }}</p>
+                        </div>
+                    </ion-item>
+                    <ion-item>
+                        Isha
+                        <div *ngIf="mosqueDetail.prayer_times"  slot="end">
+                            <p *ngIf="mosqueDetail.prayer_times[4]['time'] != ''">{{ mosqueDetail.prayer_times[4]['time'] }}</p>
+                        </div>
+                    </ion-item>
+                </ion-card-content>
+                <ion-card-content *ngIf="mosqueDetail.prayer_times == null">
+                    <ion-item>
+                        Fajr
+                        <div  slot="end">
+                            <p >{{ Fajr}}</p>
+                        </div>
+                        
+                    </ion-item>
+                    <ion-item>
+                        Zuhr
+                        <div slot="end">
+                            <p >{{ Dhuhr }}</p>
+                        </div>
+                    </ion-item>
+                    <ion-item>
+                        Asr
+                        <div  slot="end">
+                            <p >{{ Asr }}</p>
+                        </div>
+                    </ion-item>
+                    <ion-item>
+                        Maghrib
+                        <div  slot="end">
+                            <p >{{ Maghrib }}</p>
+                        </div>
+                    </ion-item>
+                    <ion-item>
+                        Isha
+                        <div  slot="end">
+                            <p >{{ Isha }}</p>
+                        </div>
+                    </ion-item>
+                </ion-card-content>
+            </ion-card>
+            <ion-card>
+                <ion-card-header>
+                    <h4>Khutbah Times</h4>
+                </ion-card-header>
+                <ion-card-content>
+                    <ion-item>
+                        Jumu'ah
+                        <p slot="end">{{ Dhuhr }}</p>
+                    </ion-item>
+                </ion-card-content>
+            </ion-card>
+            <div class="ss_bottom_clock">
+                <p> Last verified 3 day's ago.</p>
+                <ion-button>
+                    <ion-icon slot="start" name="checkmark"></ion-icon> Times are correct
+                </ion-button>
+                <ion-button color="success">
+                    <ion-icon slot="start" name="create"></ion-icon>Update correct
+                </ion-button>
+            </div>
+        </ion-list>
+        <ion-list *ngSwitchCase="'compass'">
+            <ion-card>
+                <ion-card-header>
+                    <h4>Facilities</h4>
+                </ion-card-header>
+                <ion-card-content>
+                    <p>{{ mosqueDetail.mosque_details.facilities }}</p>
+                </ion-card-content>
+            </ion-card>
+        </ion-list>
+        <ion-list *ngSwitchCase="'committee'">
+            <ion-card>
+                <ion-card-header>
+                    <h4>Committee Members</h4>
+                </ion-card-header>
+                <ion-card-content *ngIf="mosqueDetail.committee_members">
+                    <ion-item *ngFor="let v of mosqueDetail.committee_members" detail routerLink="/committee/{{v.id}}" [queryParams]="{ mosque_id: mosqueId}">
+                        <ion-avatar slot="start">
+                            <img src="http://optest.therssoftware.com/prayer_app/{{v.profile_image}}">
+                        </ion-avatar>
+                        <div>
+                            <h4>{{ v.name }}</h4>
+                            <p>{{ v.title }}</p>
+                        </div>
+                    </ion-item>
+                </ion-card-content>
+                <ion-card-content>
+                    <h4 style="text-align: center;padding: 20px;font-size:18px">No Member</h4>
+                </ion-card-content>
+            </ion-card>
+            
+        </ion-list>
+        <!-- <ion-list *ngSwitchCase="'live'">
+            <img (click)="openVideo()" src="/assets/play.png" alt="" width="100%" />
+        </ion-list> -->
+    </div>
+</ion-content>

@@ -1,0 +1,120 @@
+<ion-content *ngIf="dataAvailable">
+  <!-- <div id="map_canvas">
+      <ion-button ion-button (click)="onButtonClick()">Demo</ion-button>
+  </div> -->
+
+  <ion-card class="ion-cards-heading">
+      <img src="/assets/m1.jpeg" alt="" />
+      <ion-card-content>
+
+          <ion-searchbar #q  (keyup.enter)="search(q.value)"></ion-searchbar>
+
+
+          <h4 *ngIf="upcomingWakt == 'Fajr'">
+              {{ fajr_left }}
+              <ion-icon name="notifications"></ion-icon>
+          </h4>
+          <h4 *ngIf="upcomingWakt == 'Zuhr'">
+              {{ zuhr_left }}
+              <ion-icon name="notifications"></ion-icon>
+          </h4>
+          <h4 *ngIf="upcomingWakt == 'Asr'">
+              {{ asr_left }}
+              <ion-icon name="notifications"></ion-icon>
+          </h4>
+          <h4 *ngIf="upcomingWakt == 'Maghrib'">
+              {{ maghrib_left }}
+              <ion-icon name="notifications"></ion-icon>
+          </h4>
+          <h4 *ngIf="upcomingWakt == 'Isha'">
+              {{ isha_left }}
+              <ion-icon name="notifications"></ion-icon>
+          </h4>
+          <p>Left until {{ upcomingWakt }} - {{ timeZone }}</p>
+      </ion-card-content>
+  </ion-card>
+  <ion-card class="welcome-card"  *ngFor="let v of news">
+      <ion-item lines="none" routerLink="/postdetails/{{  v.id }}">
+          <ion-avatar slot="start">
+              <img *ngIf="v.source_name != ''" src="{{ v.source_name }}">
+              <img *ngIf="v.source_name == ''" src="/assets/dd.png" alt="asdf" />
+          </ion-avatar>
+          <ion-label>
+              {{ v.author }}
+              <p>{{ v.published_at }}</p>
+          </ion-label>
+          <!-- <ion-label text-right>
+              <ion-button shape="round" fill="outline" color="success">Follow</ion-button>
+              <ion-icon name="close-circle-outline" class="medium ss_post_close"></ion-icon>
+          </ion-label> -->
+      </ion-item>
+      <ion-card-content routerLink="/postdetails/{{  v.id }}">
+          <p>{{ v.description }}</p>
+      </ion-card-content>
+      <img *ngIf="v.image_url != null" src="{{ v.image_url }}" alt="" routerLink="/postdetails/{{  v.id }}" style="width:100%;height: 280px;"/>
+      <!-- <img *ngIf="v.image_url == null" src="/assets/dd.png" alt="" routerLink="/postdetails/{{  v.id }}" style="width:100%;height: 280px;"/> -->
+      <ion-grid>
+          <ion-row>
+              <ion-col>
+                  <ion-icon *ngIf="v.news_like != '1'" name="heart-empty" (click)=like(v.id)></ion-icon>
+                  <ion-icon *ngIf="v.news_like == '1'" name="heart" (click)=unlike(v.id)></ion-icon>
+                  {{ v.like_count }}
+              </ion-col>
+              <ion-col>
+                  <ion-icon *ngIf="v.news_bookmark != '1'" name="star-outline" (click)=save_bookmark(v.id)></ion-icon>
+                  <ion-icon *ngIf="v.news_bookmark == '1'" name="bookmark" (click)=discard_bookmark(v.id)></ion-icon>
+              </ion-col>
+              <ion-col>
+                  <ion-icon (click)=share(v.id) name="paper-plane"></ion-icon> 
+                  {{ v.share_count }}
+              </ion-col>
+          </ion-row>
+      </ion-grid>
+  </ion-card>
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText= "Loading more news">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+    <div *ngIf="data_finish">
+        <p style="text-align:center;color:rgb(131, 131, 131)">No more news</p>
+    </div>
+</ion-content>
+<ion-content *ngIf="!dataAvailable">
+    <ion-card class="ion-cards-heading">
+        <img src="/assets/m1.jpeg" alt="" />
+        <ion-card-content>
+  
+            <ion-searchbar #q  (keyup.enter)="search(q.value)"></ion-searchbar>
+  
+  
+            <h4 *ngIf="upcomingWakt == 'Fajr'">
+                {{ fajr_left }}
+                <ion-icon name="notifications"></ion-icon>
+            </h4>
+            <h4 *ngIf="upcomingWakt == 'Zuhr'">
+                {{ zuhr_left }}
+                <ion-icon name="notifications"></ion-icon>
+            </h4>
+            <h4 *ngIf="upcomingWakt == 'Asr'">
+                {{ asr_left }}
+                <ion-icon name="notifications"></ion-icon>
+            </h4>
+            <h4 *ngIf="upcomingWakt == 'Maghrib'">
+                {{ maghrib_left }}
+                <ion-icon name="notifications"></ion-icon>
+            </h4>
+            <h4 *ngIf="upcomingWakt == 'Isha'">
+                {{ isha_left }}
+                <ion-icon name="notifications"></ion-icon>
+            </h4>
+            <p>Left until {{ upcomingWakt }} - {{ timeZone }}</p>
+        </ion-card-content>
+    </ion-card>
+  <h3 style="text-align: center;">
+    No news found
+  </h3>
+</ion-content>

@@ -1,0 +1,94 @@
+<ion-header>
+    <ion-toolbar color="success">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="mosquedashboard/{{ mosque_id }}" icon="arrow-back"></ion-back-button>
+        </ion-buttons>
+        <ion-title>All Notice </ion-title>
+
+        <ion-buttons slot="end" >
+            <ion-button routerLink="/addnotification/{{ mosque_id }}">
+                <ion-icon slot="icon-only" name="add"></ion-icon>
+            </ion-button>
+            
+        </ion-buttons>
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+
+        <ion-item-sliding *ngFor="let v of allNotice; let i = index" >
+            <ion-item  detail routerLink="/noticedetails/{{ v.id }}" [queryParams]="{ mosque_id: mosque_id}">{{ v.title }}</ion-item>
+            <ion-item-options side="end">
+                <ion-item-option >
+                    <ion-buttons color="danger"  (click)="OnDelete(v.id,i)">
+                        <ion-button slot="icon-only">
+                            <ion-icon name="trash"></ion-icon>
+                        </ion-button>
+                    </ion-buttons>
+                </ion-item-option>
+            </ion-item-options>
+        </ion-item-sliding>
+
+    </ion-list>
+    <ion-list *ngIf="isloading">
+        <ion-item>
+            <ion-label>
+                <h3><ion-skeleton-text animated style="width: 50%"></ion-skeleton-text> </h3>
+            </ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-label>
+                <h3><ion-skeleton-text animated style="width: 50%"></ion-skeleton-text> </h3>
+            </ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-label>
+                <h3><ion-skeleton-text animated style="width: 50%"></ion-skeleton-text> </h3>
+            </ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-label>
+                <h3><ion-skeleton-text animated style="width: 50%"></ion-skeleton-text> </h3>
+            </ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-label>
+                <h3><ion-skeleton-text animated style="width: 50%"></ion-skeleton-text> </h3>
+            </ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-label>
+                <h3><ion-skeleton-text animated style="width: 50%"></ion-skeleton-text> </h3>
+            </ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-label>
+                <h3><ion-skeleton-text animated style="width: 50%"></ion-skeleton-text> </h3>
+            </ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-label>
+                <h3><ion-skeleton-text animated style="width: 50%"></ion-skeleton-text> </h3>
+            </ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-label>
+                <h3><ion-skeleton-text animated style="width: 50%"></ion-skeleton-text> </h3>
+            </ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-label>
+                <h3><ion-skeleton-text animated style="width: 50%"></ion-skeleton-text> </h3>
+            </ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-label>
+                <h3><ion-skeleton-text animated style="width: 50%"></ion-skeleton-text> </h3>
+            </ion-label>
+        </ion-item>
+    </ion-list>
+    <h3 style="margin-top: 60px" text-center *ngIf="!allNotice && !isloading"> No notice yet </h3>
+
+</ion-content>

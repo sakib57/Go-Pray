@@ -1,0 +1,69 @@
+<ion-header>
+    <ion-toolbar color="success">
+        <ion-buttons slot="start">
+            <ion-back-button (click)="back()" defaultHref="/tabs/tab3" icon="arrow-back"></ion-back-button>
+        </ion-buttons>
+        <ion-title>{{ wakt }}</ion-title>
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+    <h4>Notofication</h4>
+    <ion-item class="ion-no-padding">Pre-Adhan Reminder
+        <ion-select slot="end" #c (ionChange)="onNotificationChange(c.value)" [(ngModel)]="alermStatus">
+            <ion-select-option value="1" >None</ion-select-option>
+            <ion-select-option value="2" >15 minutes</ion-select-option>
+            <ion-select-option value="3" >20 minutes</ion-select-option>
+            <ion-select-option value="4" >30 minutes</ion-select-option>
+        </ion-select>
+    </ion-item>
+    <h4>Adhan Sound</h4>
+    <ion-list>
+        <ion-item class="ion-no-padding" (click)="cng_alerm_sound('none')">
+            <ion-icon *ngIf="alerm_sound != 'none'" slot="start" name="notifications-off"></ion-icon>
+            <ion-icon *ngIf="alerm_sound == 'none'" class="active" slot="start" name="notifications-off"></ion-icon>
+            <ion-label>None</ion-label>
+            <ion-icon *ngIf="alerm_sound == 'none'" color="success" name="checkmark"></ion-icon>
+        </ion-item>
+        <ion-item class="ion-no-padding" (click)="cng_alerm_sound('silence')">
+            <ion-icon *ngIf="alerm_sound != 'silence'" slot="start" name="notifications-off"></ion-icon>
+            <ion-icon *ngIf="alerm_sound == 'silence'" class="active" slot="start" name="notifications-off"></ion-icon>
+            <ion-label>Silence</ion-label>
+            <ion-icon *ngIf="alerm_sound == 'silence'" color="success" name="checkmark"></ion-icon>
+        </ion-item>
+        <ion-item class="ion-no-padding" >
+            <ion-icon (click)="cng_alerm_sound('default')" *ngIf="alerm_sound != 'default'" slot="start" name="notifications"></ion-icon>
+            <ion-icon (click)="cng_alerm_sound('default')" *ngIf="alerm_sound == 'default'" class="active" slot="start" name="notifications"></ion-icon>
+            <ion-label (click)="cng_alerm_sound('default')">Adhan (Default)</ion-label>
+            <ion-icon *ngIf="!defaultPlaying"  color="success" (click)="playDefault()" ios="ios-play" md="md-play"></ion-icon>
+            <ion-icon *ngIf="defaultPlaying"  color="success" (click)="stopDefault()"  ios="ios-pause" md="md-pause"></ion-icon>
+            <ion-icon *ngIf="alerm_sound == 'default'" color="success" name="checkmark"></ion-icon>
+        </ion-item>
+        <ion-item class="ion-no-padding" >
+            <ion-icon (click)="cng_alerm_sound('qattami')" *ngIf="alerm_sound != 'qattami'" slot="start" name="notifications"></ion-icon>
+            <ion-icon (click)="cng_alerm_sound('qattami')" *ngIf="alerm_sound == 'qattami'" class="active" slot="start" name="notifications"></ion-icon>
+            <ion-label (click)="cng_alerm_sound('qattami')">Adhan (Syeikh Nasir Al-Qattmi)</ion-label>
+            <ion-icon *ngIf="!quattamiPlaying" color="success" (click)="playQuattami()" ios="ios-play" md="md-play"></ion-icon>
+            <ion-icon *ngIf="quattamiPlaying" color="success" (click)="stopQuattami()" ios="ios-pause" md="md-pause"></ion-icon>
+            <ion-icon *ngIf="alerm_sound == 'qattami'" color="success" name="checkmark"></ion-icon>
+        </ion-item>
+        <ion-item class="ion-no-padding" >
+            <ion-icon (click)="cng_alerm_sound('hijaz')" *ngIf="alerm_sound != 'hijaz'" slot="start" name="notifications"></ion-icon>
+            <ion-icon (click)="cng_alerm_sound('hijaz')" *ngIf="alerm_sound == 'hijaz'" class="active" slot="start" name="notifications"></ion-icon>
+            <ion-label (click)="cng_alerm_sound('hijaz')">Adhan (Hijaz)</ion-label>
+            <ion-icon *ngIf="!hijajPlaying" color="success" (click)="playHijaj()" ios="ios-play" md="md-play"></ion-icon>
+            <ion-icon *ngIf="hijajPlaying" color="success" (click)="stopHijaj()" ios="ios-pause" md="md-pause"></ion-icon>
+            <ion-icon *ngIf="alerm_sound == 'hijaz'" color="success" name="checkmark"></ion-icon>
+        </ion-item>
+        <ion-item class="ion-no-padding" >
+            <ion-icon (click)="cng_alerm_sound('nahawan')" *ngIf="alerm_sound != 'nahawan'" slot="start" name="notifications"></ion-icon>
+            <ion-icon (click)="cng_alerm_sound('nahawan')" *ngIf="alerm_sound == 'nahawan'" slot="start" class="active" name="notifications"></ion-icon>
+            <ion-label (click)="cng_alerm_sound('nahawan')">Adhan (Nahawan)</ion-label>
+            <ion-icon *ngIf="!nahawanPlaying" color="success" (click)="playNahawan()" ios="ios-play" md="md-play"></ion-icon>
+            <ion-icon *ngIf="nahawanPlaying" color="success" (click)="stopNahawan()" ios="ios-pause" md="md-pause"></ion-icon>
+            <ion-icon *ngIf="alerm_sound == 'nahawan'" color="success" name="checkmark"></ion-icon>
+        </ion-item>
+
+    </ion-list>
+</ion-content>

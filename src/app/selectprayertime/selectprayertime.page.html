@@ -1,0 +1,471 @@
+<ion-header>
+    <ion-toolbar color="success">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="mosquedashboard/{{ mosque_id }}" icon="arrow-back"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Set prayer time </ion-title>
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="dataAvailable">
+
+    <ion-slides pager="true" [options]="slideOpts" *ngIf="!isloading">
+        <ion-slide >
+            <form #f_sat="ngForm" (ngSubmit)="onSubmitSat(f_sat)">
+            
+                <ion-list>
+                    <ion-input type="hidden"  [ngModel]="0" name="day_id"></ion-input>
+                    <h4 > {{ sat_date }} </h4>
+                    
+
+                    <ion-item class="ion-no-padding">
+                        <ion-label>FAJR</ion-label>
+                        <ion-datetime 
+                            display-format="h:mm A" 
+                            picker-format="h:mm A" 
+                            name="sat_fajr"
+                            [(ngModel)]="sat_fajr"
+                            required
+                        ></ion-datetime>
+                    </ion-item>
+                    <ion-item class="ion-no-padding">
+                        <ion-label>ZUHR</ion-label>
+                        <ion-datetime 
+                            display-format="h:mm A" 
+                            picker-format="h:mm A" 
+                            name="sat_zuhr"
+                            [(ngModel)]="sat_zuhr"
+                            required
+                        ></ion-datetime>
+                    </ion-item>
+                    <ion-item class="ion-no-padding">
+                        <ion-label>ASR</ion-label>
+                        <ion-datetime 
+                            display-format="h:mm A" 
+                            picker-format="h:mm A" 
+                            name="sat_asr"
+                            [(ngModel)]="sat_asr"
+                            required
+                        ></ion-datetime>
+                    </ion-item>
+                    <ion-item class="ion-no-padding">
+                        <ion-label>MAGHRIB</ion-label>
+                        <ion-datetime 
+                            display-format="h:mm A" 
+                            picker-format="h:mm A" 
+                            name="sat_maghrib"
+                            [(ngModel)]="sat_maghrib"
+                            required
+                        ></ion-datetime>
+                    </ion-item>
+                    <ion-item class="ion-no-padding">
+                        <ion-label>ISHA</ion-label>
+                        <ion-datetime 
+                            display-format="h:mm A" 
+                            picker-format="h:mm A" 
+                            name="sat_isha"
+                            [(ngModel)]="sat_isha"
+                            required
+                        ></ion-datetime>
+                    </ion-item>
+
+                    
+                </ion-list>
+                <div padding text-center>
+                    <ion-button type="submit" color="success">Update Prayer Time</ion-button>
+                </div>
+            </form>
+        </ion-slide>
+
+        <ion-slide>
+            <form #f_sun="ngForm" (ngSubmit)="onSubmitSun(f_sun)">
+                <ion-list>
+                    <ion-input type="hidden"  [ngModel]="1" name="day_id"></ion-input>
+                    <h4 > {{ sun_date }} </h4>
+                    
+
+                    <ion-item class="ion-no-padding">
+                        <ion-label>FAJR</ion-label>
+                        <ion-datetime 
+                            display-format="h:mm A" 
+                            picker-format="h:mm A" 
+                            name="sun_fajr"
+                            [(ngModel)]="sun_fajr"
+                            required
+                        ></ion-datetime>
+                    </ion-item>
+                    <ion-item class="ion-no-padding">
+                        <ion-label>ZUHR</ion-label>
+                        <ion-datetime 
+                            display-format="h:mm A" 
+                            picker-format="h:mm A" 
+                            name="sun_zuhr"
+                            [(ngModel)]="sun_zuhr"
+                            required
+                        ></ion-datetime>
+                    </ion-item>
+                    <ion-item class="ion-no-padding">
+                        <ion-label>ASR</ion-label>
+                        <ion-datetime 
+                            display-format="h:mm A" 
+                            picker-format="h:mm A" 
+                            name="sun_asr"
+                            [(ngModel)]="sun_asr"
+                            required
+                        ></ion-datetime>
+                    </ion-item>
+                    <ion-item class="ion-no-padding">
+                        <ion-label>MAGHRIB</ion-label>
+                        <ion-datetime 
+                            display-format="h:mm A" 
+                            picker-format="h:mm A" 
+                            name="sun_maghrib"
+                            [(ngModel)]="sun_maghrib"
+                            required
+                        ></ion-datetime>
+                    </ion-item>
+                    <ion-item class="ion-no-padding">
+                        <ion-label>ISHA</ion-label>
+                        <ion-datetime 
+                            display-format="h:mm A" 
+                            picker-format="h:mm A" 
+                            name="sun_isha"
+                            [(ngModel)]="sun_isha"
+                            required
+                        ></ion-datetime>
+                    </ion-item>
+                    
+                </ion-list>
+                <div padding text-center>
+                    <ion-button type="submit" color="success">Update Prayer Time</ion-button>
+                </div>
+            </form>
+        </ion-slide>
+
+            <ion-slide>
+                <form #f_mon="ngForm" (ngSubmit)="onSubmitMon(f_mon)">
+                    <ion-list>
+                        
+                        <ion-input type="hidden"  [ngModel]="2" name="day_id"></ion-input>
+                        <h4 > {{ mon_date }} </h4>
+                        
+
+                        <ion-item class="ion-no-padding">
+                            <ion-label>FAJR</ion-label>
+                            <ion-datetime 
+                                display-format="h:mm A" 
+                                picker-format="h:mm A" 
+                                name="mon_fajr"
+                                [(ngModel)]="mon_fajr"
+                                required
+                            ></ion-datetime>
+                        </ion-item>
+                        <ion-item class="ion-no-padding">
+                            <ion-label>ZUHR</ion-label>
+                            <ion-datetime 
+                                display-format="h:mm A" 
+                                picker-format="h:mm A" 
+                                name="mon_zuhr"
+                                [(ngModel)]="mon_zuhr"
+                                required
+                            ></ion-datetime>
+                        </ion-item>
+                        <ion-item class="ion-no-padding">
+                            <ion-label>ASR</ion-label>
+                            <ion-datetime 
+                                display-format="h:mm A" 
+                                picker-format="h:mm A" 
+                                name="mon_asr"
+                                [(ngModel)]="mon_asr"
+                                required
+                            ></ion-datetime>
+                        </ion-item>
+                        <ion-item class="ion-no-padding">
+                            <ion-label>MAGHRIB</ion-label>
+                            <ion-datetime 
+                                display-format="h:mm A" 
+                                picker-format="h:mm A" 
+                                name="mon_maghrib"
+                                [(ngModel)]="mon_maghrib"
+                                required
+                            ></ion-datetime>
+                        </ion-item>
+                        <ion-item class="ion-no-padding">
+                            <ion-label>ISHA</ion-label>
+                            <ion-datetime 
+                                display-format="h:mm A" 
+                                picker-format="h:mm A" 
+                                name="mon_isha"
+                                [(ngModel)]="mon_isha"
+                                required
+                            ></ion-datetime>
+                        </ion-item>
+
+                    </ion-list>
+                    <div padding text-center>
+                        <ion-button type="submit" color="success">Update Prayer Time</ion-button>
+                    </div>
+                    <div style="height: 150px"></div>
+                </form>
+            </ion-slide>
+            <ion-slide>
+                <form #f_tue="ngForm" (ngSubmit)="onSubmitTue(f_tue)">
+                    <ion-list>
+
+                        <ion-input type="hidden"  [ngModel]="3" name="day_id"></ion-input>
+                        <h4 > {{ tue_date }} </h4>
+
+                        <ion-item class="ion-no-padding">
+                            <ion-label>FAJR</ion-label>
+                            <ion-datetime 
+                                display-format="h:mm A" 
+                                picker-format="h:mm A" 
+                                name="tue_fajr"
+                                [(ngModel)]="tue_fajr"
+                                required
+                            ></ion-datetime>
+                        </ion-item>
+                        <ion-item class="ion-no-padding">
+                            <ion-label>ZUHR</ion-label>
+                            <ion-datetime 
+                                display-format="h:mm A" 
+                                picker-format="h:mm A" 
+                                name="tue_zuhr"
+                                [(ngModel)]="tue_zuhr"
+                                required
+                            ></ion-datetime>
+                        </ion-item>
+                        <ion-item class="ion-no-padding">
+                            <ion-label>ASR</ion-label>
+                            <ion-datetime 
+                                display-format="h:mm A" 
+                                picker-format="h:mm A" 
+                                name="tue_asr"
+                                [(ngModel)]="tue_asr"
+                                required
+                            ></ion-datetime>
+                        </ion-item>
+                        <ion-item class="ion-no-padding">
+                            <ion-label>MAGHRIB</ion-label>
+                            <ion-datetime 
+                                display-format="h:mm A" 
+                                picker-format="h:mm A" 
+                                name="tue_maghrib"
+                                [(ngModel)]="tue_maghrib"
+                                required
+                            ></ion-datetime>
+                        </ion-item>
+                        <ion-item class="ion-no-padding">
+                            <ion-label>ISHA</ion-label>
+                            <ion-datetime 
+                                display-format="h:mm A" 
+                                picker-format="h:mm A" 
+                                name="tue_isha"
+                                [(ngModel)]="tue_isha"
+                                required
+                            ></ion-datetime>
+                        </ion-item>
+
+                    </ion-list>
+                    <div padding text-center>
+                        <ion-button type="submit" color="success">Update Prayer Time</ion-button>
+                    </div>
+                    <div style="height: 150px"></div>
+                </form>
+            </ion-slide>
+            <ion-slide>
+                <form #f_wed="ngForm" (ngSubmit)="onSubmitWed(f_wed)">
+                    <ion-list>
+                        <ion-input type="hidden"  [ngModel]="4" name="day_id"></ion-input>
+                        <h4 > {{ wed_date }} </h4>
+
+                        <ion-item class="ion-no-padding">
+                            <ion-label>FAJR</ion-label>
+                            <ion-datetime 
+                                display-format="h:mm A" 
+                                picker-format="h:mm A" 
+                                name="wed_fajr"
+                                [(ngModel)]="wed_fajr"
+                                required
+                            ></ion-datetime>
+                        </ion-item>
+                        <ion-item class="ion-no-padding">
+                            <ion-label>ZUHR</ion-label>
+                            <ion-datetime 
+                                display-format="h:mm A" 
+                                picker-format="h:mm A" 
+                                name="wed_zuhr"
+                                [(ngModel)]="wed_zuhr"
+                                required
+                            ></ion-datetime>
+                        </ion-item>
+                        <ion-item class="ion-no-padding">
+                            <ion-label>ASR</ion-label>
+                            <ion-datetime 
+                                display-format="h:mm A" 
+                                picker-format="h:mm A" 
+                                name="wed_asr"
+                                [(ngModel)]="wed_asr"
+                                required
+                            ></ion-datetime>
+                        </ion-item>
+                        <ion-item class="ion-no-padding">
+                            <ion-label>MAGHRIB</ion-label>
+                            <ion-datetime 
+                                display-format="h:mm A" 
+                                picker-format="h:mm A" 
+                                name="wed_maghrib"
+                                [(ngModel)]="wed_maghrib"
+                                required
+                            ></ion-datetime>
+                        </ion-item>
+                        <ion-item class="ion-no-padding">
+                            <ion-label>ISHA</ion-label>
+                            <ion-datetime 
+                                display-format="h:mm A" 
+                                picker-format="h:mm A" 
+                                name="wed_isha"
+                                [(ngModel)]="wed_isha"
+                                required
+                            ></ion-datetime>
+                        </ion-item>
+
+                    </ion-list>
+                    <div padding text-center>
+                        <ion-button type="submit" color="success">Update Prayer Time</ion-button>
+                    </div>
+                    <div style="height: 150px"></div>
+                </form>
+            </ion-slide>
+            <ion-slide>
+                <form #f_thu="ngForm" (ngSubmit)="onSubmitThu(f_thu)">
+                    <ion-list>
+                        <ion-input type="hidden"  [ngModel]="5" name="day_id"></ion-input>
+                        <h4 > {{ thu_date }} </h4>
+
+                        <ion-item class="ion-no-padding">
+                            <ion-label>FAJR</ion-label>
+                            <ion-datetime 
+                                display-format="h:mm A" 
+                                picker-format="h:mm A" 
+                                name="thu_fajr"
+                                [(ngModel)]="thu_fajr"
+                                required
+                            ></ion-datetime>
+                        </ion-item>
+                        <ion-item class="ion-no-padding">
+                            <ion-label>ZUHR</ion-label>
+                            <ion-datetime 
+                                display-format="h:mm A" 
+                                picker-format="h:mm A" 
+                                name="thu_zuhr"
+                                [(ngModel)]="thu_zuhr"
+                                required
+                            ></ion-datetime>
+                        </ion-item>
+                        <ion-item class="ion-no-padding">
+                            <ion-label>ASR</ion-label>
+                            <ion-datetime 
+                                display-format="h:mm A" 
+                                picker-format="h:mm A" 
+                                name="thu_asr"
+                                [(ngModel)]="thu_asr"
+                                required
+                            ></ion-datetime>
+                        </ion-item>
+                        <ion-item class="ion-no-padding">
+                            <ion-label>MAGHRIB</ion-label>
+                            <ion-datetime 
+                                display-format="h:mm A" 
+                                picker-format="h:mm A" 
+                                name="thu_maghrib"
+                                [(ngModel)]="thu_maghrib"
+                                required
+                            ></ion-datetime>
+                        </ion-item>
+                        <ion-item class="ion-no-padding">
+                            <ion-label>ISHA</ion-label>
+                            <ion-datetime 
+                                display-format="h:mm A" 
+                                picker-format="h:mm A" 
+                                name="thu_isha"
+                                [(ngModel)]="thu_isha"
+                                required
+                            ></ion-datetime>
+                        </ion-item>
+
+                    </ion-list>
+                    <div class="ion-no-padding ion-text-center" >
+                        <ion-button type="submit" color="success">Update Prayer Time</ion-button>
+                    </div>
+                    <div style="height: 150px"></div>
+                </form>
+            </ion-slide>
+            <ion-slide>
+                <form #f_fri="ngForm" (ngSubmit)="onSubmitFri(f_fri)">
+                    <ion-list>
+                        <ion-input type="hidden"  [ngModel]="6" name="day_id"></ion-input>
+                        <h4 > {{ thu_date }} </h4>
+
+                        <ion-item class="ion-no-padding">
+                            <ion-label>FAJR</ion-label>
+                            <ion-datetime 
+                                display-format="h:mm A" 
+                                picker-format="h:mm A" 
+                                name="fri_fajr"
+                                [(ngModel)]="fri_fajr"
+                                required
+                            ></ion-datetime>
+                        </ion-item>
+                        <ion-item class="ion-no-padding">
+                            <ion-label>ZUHR</ion-label>
+                            <ion-datetime 
+                                display-format="h:mm A" 
+                                picker-format="h:mm A" 
+                                name="fri_zuhr"
+                                [(ngModel)]="fri_zuhr"
+                                required
+                            ></ion-datetime>
+                        </ion-item>
+                        <ion-item class="ion-no-padding">
+                            <ion-label>ASR</ion-label>
+                            <ion-datetime 
+                                display-format="h:mm A" 
+                                picker-format="h:mm A" 
+                                name="fri_asr"
+                                [(ngModel)]="fri_asr"
+                                required
+                            ></ion-datetime>
+                        </ion-item>
+                        <ion-item class="ion-no-padding">
+                            <ion-label>MAGHRIB</ion-label>
+                            <ion-datetime 
+                                display-format="h:mm A" 
+                                picker-format="h:mm A" 
+                                name="fri_maghrib"
+                                [(ngModel)]="fri_maghrib"
+                                required
+                            ></ion-datetime>
+                        </ion-item>
+                        <ion-item class="ion-no-padding">
+                            <ion-label>ISHA</ion-label>
+                            <ion-datetime 
+                                display-format="h:mm A" 
+                                picker-format="h:mm A" 
+                                name="fri_isha"
+                                [(ngModel)]="fri_isha"
+                                required
+                            ></ion-datetime>
+                        </ion-item>
+
+                    </ion-list>
+                    <div class="ion-padding ion-text-center">
+                        <ion-button type="submit" color="success">Update Prayer Time</ion-button>
+                    </div>
+                    <div style="height: 150px"></div>
+                </form>
+            </ion-slide>
+    </ion-slides>
+    
+</ion-content>

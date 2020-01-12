@@ -1,0 +1,73 @@
+<ion-content>
+    <ion-card class="ion-cards-heading">
+        <img src="/assets/m3.png" alt="" />
+        <ion-card-content>
+            <div *ngIf="!login_status && !mosque_user" class="profile_img" routerLink="/login">
+                <img src="assets/profile.png" />
+            </div>
+            <p *ngIf="!login_status && !mosque_user" class="ion-text-center" routerLink="/login">Login</p>
+
+
+            <div *ngIf="login_status" class="profile_img">
+                <img *ngIf="user_info.picture != ''" [src]="user_info.picture" />
+                <img *ngIf="user_info.picture == ''" src="assets/profile.png" />
+                <!-- <img src="https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=1446470978826790&height=200&width=200&ext=1569221708&hash=AeRi1oQCrxRJ6lmn" /> -->
+            </div>
+            <p *ngIf="login_status" style="margin-bottom: -4px;" class="ion-text-center">{{ user_info.name }}</p>
+            <p *ngIf="login_status" style="text-align: center;font-size: 12px;margin-top: 0px">Logged in as {{ user_info.email }}</p>
+
+            <ion-grid>
+                <ion-row>
+                    <ion-col class="ion-text-left">
+                        <ion-icon name="person"></ion-icon> Following
+                    </ion-col>
+                    <ion-col class="ion-text-right">
+                        <ion-icon name="star"></ion-icon>Favourite
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-card-content>
+    </ion-card>
+    <ion-list>
+        <ion-item *ngIf="mosque_user"  routerLink="../../../user-mosque-list">
+            <ion-icon slot="start" name="list-box"></ion-icon>
+            <ion-label >Mosque User Dashboard</ion-label>
+        </ion-item>
+        <div *ngIf="!mosque_user">
+            <ion-item>
+                <ion-icon name="key" slot="start"></ion-icon>
+                <ion-label>Go premium</ion-label>
+            </ion-item>
+            <!-- <ion-item (click)="share()">
+                <ion-icon name="share" slot="start"></ion-icon>
+                <ion-label>Share</ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-icon slot="start" name="notifications"></ion-icon>
+                <ion-label>Wallet</ion-label>
+            </ion-item> -->
+            <ion-item (click)="onNotify()">
+                <ion-icon slot="start" name="bookmark"></ion-icon>
+                <ion-label>Notification</ion-label>
+            </ion-item>
+            <ion-item routerLink="/setting">
+                <ion-icon slot="start" name="settings"></ion-icon>
+                <ion-label>Settings</ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-icon slot="start" name="star"></ion-icon>
+                <ion-label>Rate us</ion-label>
+            </ion-item>
+            <ion-item routerLink="/privacy">
+                <ion-icon slot="start" name="unlock"></ion-icon>
+                <ion-label>Privacy Pollicy</ion-label>
+            </ion-item>
+            <ion-item *ngIf="login_status" (click)="Logout()">
+                <ion-icon slot="start" name="log-out"></ion-icon>
+                <ion-label >Logout</ion-label>
+            </ion-item>
+        </div>
+        
+        
+    </ion-list>
+</ion-content>

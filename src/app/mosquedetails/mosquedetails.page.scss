@@ -1,0 +1,127 @@
+.ion-cards-heading {
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+
+    ion-card-content {
+        color: #fff;
+        position: absolute;
+        left: 0;
+        right: 0;
+        width: 100%;
+        z-index: 100;
+        bottom: 0;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
+
+        h4 {
+            display: flex;
+            height: 100%;
+            align-items: flex-end;
+            text-shadow: 0px 0px 5px #666;
+            font-size: 24px;
+            font-weight: 600;
+        }
+    }
+}
+
+.pr_live {
+    position: absolute;
+    top: 30px;
+    right: 14px;
+    color: red;
+    font-size: 14px;
+    font-weight: bold;
+    background: #fff;
+    padding: 2px;
+    z-index: 999;
+
+    span {
+        font-size: 40px;
+        line-height: 0;
+    }
+}
+
+.pr_preferable {
+    position: absolute;
+    top: 30px;
+    left: 14px;
+    color: #10dc60;
+    font-size: 14px;
+    font-weight: bold;
+    background: #fff;
+    padding: 2px;
+    z-index: 999;
+    border-radius: 3px;
+    padding: 4px 5px;
+
+    .pr_live span {
+        font-size: 40px;
+        line-height: 0;
+    }
+}
+.non_preferable {
+    position: absolute;
+    top: 30px;
+    left: 14px;
+    color: #4811df;
+    font-size: 14px;
+    font-weight: bold;
+    background: #fff;
+    padding: 2px;
+    z-index: 999;
+    border-radius: 3px;
+    padding: 4px 5px;
+    .pr_live span {
+        font-size: 40px;
+        line-height: 0;
+    }
+}
+
+ion-segment-button {
+    --border-radius: 0;
+}
+
+ion-segment-button.ios {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+ion-list {
+    ion-card-header {
+        background: #f1f1f1;
+
+        h4 {
+            margin: 0;
+        }
+    }
+}
+
+.ss_bottom_clock {
+    background: #f9f9f9;
+    padding: 10px;
+    text-align: center;
+    border-top: 4px solid #10dc60;
+    border-bottom: 4px solid #10dc60;
+}
+
+.map {
+    height: 100%;
+}
+
+
+ion-item {
+    h4 {
+        margin: 0;
+        font-size: 16px;
+        color: #333;
+        span {
+            font-size: 14px;
+            color: #a7a7a7;
+        }
+    }
+    p {
+        font-size: 14px;
+        color: #a7a7a7;
+        margin: 0;
+    }
+}

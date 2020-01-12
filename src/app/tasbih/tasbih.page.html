@@ -1,0 +1,47 @@
+<ion-header>
+    <ion-toolbar color="success">
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="arrow-back"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Tasbih</ion-title>
+
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-grid>
+        <ion-row  class="ion-align-items-center ion-text-center">
+            <ion-col>
+                <ion-card>
+                    <ion-card-content>
+                       {{counter}}
+                    </ion-card-content>
+                </ion-card>
+                Count
+            </ion-col>
+            <ion-col>
+                <ion-card (click)="changeRound()">
+                    <ion-card-content>
+                        {{ round }}
+                    </ion-card-content>
+                </ion-card>
+                Round
+            </ion-col>
+            <ion-col>
+                <ion-card>
+                    <ion-card-content>
+                        {{ total }}
+                    </ion-card-content>
+                </ion-card>
+                Total
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <div class="ion-text-center">
+        <ion-button  (click)="addCount()" color="success" center class="ss_btn">{{ total }}</ion-button>
+        <br/>
+        <br/>
+        <ion-button (click)="reset()" size="small" color="light">Rest count</ion-button>
+    </div>
+
+
+</ion-content>

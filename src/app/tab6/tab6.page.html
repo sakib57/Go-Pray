@@ -1,0 +1,1133 @@
+<ion-header>
+    <ion-toolbar color="success">
+        <!-- <ion-searchbar color="success" class="ss_searchbar" slot="start" placeholder="Compass, NSEW" howCancelButton="focus" cancelButtonText="Custom Cancel"></ion-searchbar>
+        <ion-icon slot="end" name="navigate"></ion-icon> -->
+        <ion-title>Nearby Mosques & Prayer Time</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+        <div *ngIf="upcomingWakt == 'fajr'">
+            <ion-list class="fajir">
+                    <ion-grid>
+                        <ion-row class="ion-align-items-center">
+                            <ion-col class="left_side" size="4" class="ion-text-center">
+                                <h3>Fajr</h3>
+                                <p> Started by</p>
+                                <p>{{ fajar_time }}</p>
+                                <img src="assets/clock4pm.png" height="70" />
+                            </ion-col>
+                            <ion-col *ngIf="mosqueAvailable">
+                                    <ion-item *ngIf="allNearbyMosque.mosques[0]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[0]['id'] }}">
+                                        <div>
+                                            <h4> {{ allNearbyMosque.mosques[0]['name'] }} <span>{{ allNearbyMosque.mosques[0]['distance_meter'] }} m</span></h4>
+                                            <p *ngIf="mosque_0_prayer_time"> {{ allNearbyMosque.mosques[0]['today_prayer'][0].time }} </p>
+                                        </div>
+                                        <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                    </ion-item>
+                                    <ion-item *ngIf="allNearbyMosque.mosques[1]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[1]['id'] }}">
+                                        <div>
+                                            <h4>{{ allNearbyMosque.mosques[1]['name'] }} <span>{{ allNearbyMosque.mosques[1]['distance_meter'] }} m</span></h4>
+                                            <p *ngIf="mosque_1_prayer_time">{{ allNearbyMosque.mosques[1]['today_prayer'][0].time }}</p>
+                                        </div>
+                                        <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                    </ion-item>
+                                    <ion-item *ngIf="allNearbyMosque.mosques[2]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[2]['id'] }}">
+                                        <div>
+                                            <h4>{{ allNearbyMosque.mosques[2]['name'] }} <span>{{ allNearbyMosque.mosques[2]['distance_meter'] }} m</span></h4>
+                                            <p *ngIf="mosque_2_prayer_time">{{ allNearbyMosque.mosques[2]['today_prayer'][0].time }}</p>
+                                        </div>
+                                        <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                    </ion-item>
+                                    <ion-item routerLink="/nearby">
+                                        <div>
+                                            <h4>More Mosque Nearby</h4>
+                                        </div>
+                                        <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                    </ion-item>
+                                </ion-col>
+                                <ion-col *ngIf="!mosqueAvailable">
+                                    <h4> No mosque found !</h4>
+                                </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </ion-list>
+                <ion-list class="jahar">
+                        <ion-grid>
+                            <ion-row class="ion-align-items-center">
+                                <ion-col class="left_side" size="4" class="ion-text-center">
+                                    <h3>Zuhr</h3>
+                                    <p>Started</p>
+                                    <p>{{ zuhr_time }}</p>
+                                    <img src="assets/clock4pm.png" height="70" />
+                                </ion-col>
+                                <ion-col *ngIf="mosqueAvailable">
+                                    <ion-item *ngIf="allNearbyMosque.mosques[0]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[0]['id'] }}">
+                                        <div>
+                                            <h4> {{ allNearbyMosque.mosques[0]['name'] }} <span>{{ allNearbyMosque.mosques[0]['distance_meter'] }} m</span></h4>
+                                            <p *ngIf="mosque_0_prayer_time"> {{ allNearbyMosque.mosques[0]['today_prayer'][1].time }} </p>
+                                        </div>
+                                        <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                    </ion-item>
+                                    <ion-item *ngIf="allNearbyMosque.mosques[1]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[1]['id'] }}">
+                                        <div>
+                                            <h4>{{ allNearbyMosque.mosques[1]['name'] }} <span>{{ allNearbyMosque.mosques[1]['distance_meter'] }} m</span></h4>
+                                            <p *ngIf="mosque_1_prayer_time">{{ allNearbyMosque.mosques[1]['today_prayer'][1].time }}</p>
+                                        </div>
+                                        <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                    </ion-item>
+                                    <ion-item *ngIf="allNearbyMosque.mosques[2]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[2]['id'] }}">
+                                        <div>
+                                            <h4>{{ allNearbyMosque.mosques[2]['name'] }} <span>{{ allNearbyMosque.mosques[2]['distance_meter'] }} m</span></h4>
+                                            <p *ngIf="mosque_2_prayer_time">{{ allNearbyMosque.mosques[2]['today_prayer'][1].time }}</p>
+                                        </div>
+                                        <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                    </ion-item>
+                                    <ion-item routerLink="/nearby">
+                                        <div>
+                                            <h4>More Mosque Nearby</h4>
+                                        </div>
+                                        <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                    </ion-item>
+                                </ion-col>
+                                <ion-col *ngIf="!mosqueAvailable">
+                                    <h4> No mosque found !</h4>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </ion-list>
+                    <ion-list class="asr">
+                        <ion-grid>
+                            <ion-row class="ion-align-items-center">
+                                <ion-col class="left_side" size="4" class="ion-text-center">
+                                    <h3>Asr</h3>
+                                    <p> Started by</p>
+                                    <p>{{ asr_time }}</p>
+                                    <img src="assets/clock4pm.png" height="70" />
+                                </ion-col>
+                                <ion-col *ngIf="mosqueAvailable">
+                                        <ion-item *ngIf="allNearbyMosque.mosques[0]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[0]['id'] }}">
+                                            <div>
+                                                <h4> {{ allNearbyMosque.mosques[0]['name'] }} <span>{{ allNearbyMosque.mosques[0]['distance_meter'] }} m</span></h4>
+                                                <p *ngIf="mosque_0_prayer_time"> {{ allNearbyMosque.mosques[0]['today_prayer'][2].time }} </p>
+                                            </div>
+                                            <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                        </ion-item>
+                                        <ion-item *ngIf="allNearbyMosque.mosques[1]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[1]['id'] }}">
+                                            <div>
+                                                <h4>{{ allNearbyMosque.mosques[1]['name'] }} <span>{{ allNearbyMosque.mosques[1]['distance_meter'] }} m</span></h4>
+                                                <p *ngIf="mosque_1_prayer_time">{{ allNearbyMosque.mosques[1]['today_prayer'][2].time }}</p>
+                                            </div>
+                                            <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                        </ion-item>
+                                        <ion-item *ngIf="allNearbyMosque.mosques[2]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[2]['id'] }}">
+                                            <div>
+                                                <h4>{{ allNearbyMosque.mosques[2]['name'] }} <span>{{ allNearbyMosque.mosques[2]['distance_meter'] }} m</span></h4>
+                                                <p *ngIf="mosque_2_prayer_time">{{ allNearbyMosque.mosques[2]['today_prayer'][2].time }}</p>
+                                            </div>
+                                            <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                        </ion-item>
+                                        <ion-item routerLink="/nearby">
+                                            <div>
+                                                <h4>More Mosque Nearby</h4>
+                                            </div>
+                                            <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                        </ion-item>
+                                    </ion-col>
+                                    <ion-col *ngIf="!mosqueAvailable">
+                                        <h4> No mosque found !</h4>
+                                    </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </ion-list>
+                    <ion-list class="maghrib">
+                        <ion-grid>
+                            <ion-row class="ion-align-items-center">
+                                <ion-col class="left_side" size="4" class="ion-text-center">
+                                    <h3>Maghrib</h3>
+                                    <p> Started by</p>
+                                    <p>{{ maghrib_time }}</p>
+                                    <img src="assets/clock4pm.png" height="70" />
+                                </ion-col>
+                                <ion-col *ngIf="mosqueAvailable">
+                                        <ion-item *ngIf="allNearbyMosque.mosques[0]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[0]['id'] }}">
+                                            <div>
+                                                <h4> {{ allNearbyMosque.mosques[0]['name'] }} <span>{{ allNearbyMosque.mosques[0]['distance_meter'] }} m</span></h4>
+                                                <p *ngIf="mosque_0_prayer_time"> {{ allNearbyMosque.mosques[0]['today_prayer'][3].time }} </p>
+                                            </div>
+                                            <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                        </ion-item>
+                                        <ion-item *ngIf="allNearbyMosque.mosques[1]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[1]['id'] }}">
+                                            <div>
+                                                <h4>{{ allNearbyMosque.mosques[1]['name'] }} <span>{{ allNearbyMosque.mosques[1]['distance_meter'] }} m</span></h4>
+                                                <p *ngIf="mosque_1_prayer_time">{{ allNearbyMosque.mosques[1]['today_prayer'][3].time }}</p>
+                                            </div>
+                                            <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                        </ion-item>
+                                        <ion-item *ngIf="allNearbyMosque.mosques[2]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[2]['id'] }}">
+                                            <div>
+                                                <h4>{{ allNearbyMosque.mosques[2]['name'] }} <span>{{ allNearbyMosque.mosques[2]['distance_meter'] }} m</span></h4>
+                                                <p *ngIf="mosque_2_prayer_time">{{ allNearbyMosque.mosques[2]['today_prayer'][3].time }}</p>
+                                            </div>
+                                            <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                        </ion-item>
+                                        <ion-item routerLink="/nearby">
+                                            <div>
+                                                <h4>More Mosque Nearby</h4>
+                                            </div>
+                                            <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                        </ion-item>
+                                    </ion-col>
+                                    <ion-col *ngIf="!mosqueAvailable">
+                                        <h4> No mosque found !</h4>
+                                    </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </ion-list>
+                    <ion-list class="isha">
+                            <ion-grid>
+                                <ion-row class="ion-align-items-center">
+                                    <ion-col class="left_side" size="4" class="ion-text-center">
+                                        <h3>Isha</h3>
+                                        <p> Started by</p>
+                                        <p>{{ isha_time }}</p>
+                                        <img src="assets/clock4pm.png" height="70" />
+                                    </ion-col>
+                                    <ion-col *ngIf="mosqueAvailable">
+                                            <ion-item *ngIf="allNearbyMosque.mosques[0]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[0]['id'] }}">
+                                                <div>
+                                                    <h4> {{ allNearbyMosque.mosques[0]['name'] }} <span>{{ allNearbyMosque.mosques[0]['distance_meter'] }} m</span></h4>
+                                                    <p *ngIf="mosque_0_prayer_time"> {{ allNearbyMosque.mosques[0]['today_prayer'][4].time }} </p>
+                                                </div>
+                                                <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                            </ion-item>
+                                            <ion-item *ngIf="allNearbyMosque.mosques[1]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[1]['id'] }}">
+                                                <div>
+                                                    <h4>{{ allNearbyMosque.mosques[1]['name'] }} <span>{{ allNearbyMosque.mosques[1]['distance_meter'] }} m</span></h4>
+                                                    <p *ngIf="mosque_1_prayer_time">{{ allNearbyMosque.mosques[1]['today_prayer'][4].time }}</p>
+                                                </div>
+                                                <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                            </ion-item>
+                                            <ion-item *ngIf="allNearbyMosque.mosques[2]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[2]['id'] }}">
+                                                <div>
+                                                    <h4>{{ allNearbyMosque.mosques[2]['name'] }} <span>{{ allNearbyMosque.mosques[2]['distance_meter'] }} m</span></h4>
+                                                    <p *ngIf="mosque_2_prayer_time">{{ allNearbyMosque.mosques[2]['today_prayer'][4].time }}</p>
+                                                </div>
+                                                <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                            </ion-item>
+                                            <ion-item routerLink="/nearby">
+                                                <div>
+                                                    <h4>More Mosque Nearby</h4>
+                                                </div>
+                                                <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                            </ion-item>
+                                        </ion-col>
+                                        <ion-col *ngIf="!mosqueAvailable">
+                                            <h4> No mosque found !</h4>
+                                        </ion-col>
+                                </ion-row>
+                            </ion-grid>
+                        </ion-list>
+                        
+        </div>
+    <!-- ==================================================================== -->
+    
+    <div *ngIf="upcomingWakt == 'zuhr'">
+            <ion-list class="jahar">
+                    <ion-grid>
+                        <ion-row class="ion-align-items-center">
+                            <ion-col class="left_side" size="4" class="ion-text-center">
+                                <h3>Zuhr</h3>
+                                <p>Started</p>
+                                <p>{{ zuhr_time }}</p>
+                                <img src="assets/clock4pm.png" height="70" />
+                            </ion-col>
+                            <ion-col *ngIf="mosqueAvailable">
+                                <ion-item *ngIf="allNearbyMosque.mosques[0]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[0]['id'] }}">
+                                    <div>
+                                        <h4> {{ allNearbyMosque.mosques[0]['name'] }} <span>{{ allNearbyMosque.mosques[0]['distance_meter'] }} m</span></h4>
+                                        <p *ngIf="mosque_0_prayer_time"> {{ allNearbyMosque.mosques[0]['today_prayer'][1].time }} </p>
+                                    </div>
+                                    <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                </ion-item>
+                                <ion-item *ngIf="allNearbyMosque.mosques[1]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[1]['id'] }}">
+                                    <div>
+                                        <h4>{{ allNearbyMosque.mosques[1]['name'] }} <span>{{ allNearbyMosque.mosques[1]['distance_meter'] }} m</span></h4>
+                                        <p *ngIf="mosque_1_prayer_time">{{ allNearbyMosque.mosques[1]['today_prayer'][1].time }}</p>
+                                    </div>
+                                    <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                </ion-item>
+                                <ion-item *ngIf="allNearbyMosque.mosques[2]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[2]['id'] }}">
+                                    <div>
+                                        <h4>{{ allNearbyMosque.mosques[2]['name'] }} <span>{{ allNearbyMosque.mosques[2]['distance_meter'] }} m</span></h4>
+                                        <p *ngIf="mosque_2_prayer_time">{{ allNearbyMosque.mosques[2]['today_prayer'][1].time }}</p>
+                                    </div>
+                                    <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                </ion-item>
+                                <ion-item routerLink="/nearby">
+                                    <div>
+                                        <h4>More Mosque Nearby</h4>
+                                    </div>
+                                    <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                </ion-item>
+                            </ion-col>
+                            <ion-col *ngIf="!mosqueAvailable" >
+                                <h4> No mosque found !</h4>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </ion-list>
+                <ion-list class="asr">
+                    <ion-grid>
+                        <ion-row class="ion-align-items-center">
+                            <ion-col class="left_side" size="4" class="ion-text-center">
+                                <h3>Asr</h3>
+                                <p> Started by</p>
+                                <p>{{ asr_time }}</p>
+                                <img src="assets/clock4pm.png" height="70" />
+                            </ion-col>
+                            <ion-col *ngIf="mosqueAvailable">
+                                    <ion-item *ngIf="allNearbyMosque.mosques[0]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[0]['id'] }}">
+                                        <div>
+                                            <h4> {{ allNearbyMosque.mosques[0]['name'] }} <span>{{ allNearbyMosque.mosques[0]['distance_meter'] }} m</span></h4>
+                                            <p *ngIf="mosque_0_prayer_time"> {{ allNearbyMosque.mosques[0]['today_prayer'][2].time }} </p>
+                                        </div>
+                                        <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                    </ion-item>
+                                    <ion-item *ngIf="allNearbyMosque.mosques[1]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[1]['id'] }}">
+                                        <div>
+                                            <h4>{{ allNearbyMosque.mosques[1]['name'] }} <span>{{ allNearbyMosque.mosques[1]['distance_meter'] }} m</span></h4>
+                                            <p *ngIf="mosque_1_prayer_time">{{ allNearbyMosque.mosques[1]['today_prayer'][2].time }}</p>
+                                        </div>
+                                        <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                    </ion-item>
+                                    <ion-item *ngIf="allNearbyMosque.mosques[2]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[2]['id'] }}">
+                                        <div>
+                                            <h4>{{ allNearbyMosque.mosques[2]['name'] }} <span>{{ allNearbyMosque.mosques[2]['distance_meter'] }} m</span></h4>
+                                            <p *ngIf="mosque_2_prayer_time">{{ allNearbyMosque.mosques[2]['today_prayer'][2].time }}</p>
+                                        </div>
+                                        <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                    </ion-item>
+                                    <ion-item routerLink="/nearby">
+                                        <div>
+                                            <h4>More Mosque Nearby</h4>
+                                        </div>
+                                        <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                    </ion-item>
+                                </ion-col>
+                                <ion-col *ngIf="!mosqueAvailable">
+                                    <h4> No mosque found !</h4>
+                                </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </ion-list>
+                <ion-list class="maghrib">
+                    <ion-grid>
+                        <ion-row class="ion-align-items-center">
+                            <ion-col class="left_side" size="4" class="ion-text-center">
+                                <h3>Maghrib</h3>
+                                <p> Started by</p>
+                                <p>{{ maghrib_time }}</p>
+                                <img src="assets/clock4pm.png" height="70" />
+                            </ion-col>
+                            <ion-col *ngIf="mosqueAvailable">
+                                    <ion-item *ngIf="allNearbyMosque.mosques[0]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[0]['id'] }}">
+                                        <div>
+                                            <h4> {{ allNearbyMosque.mosques[0]['name'] }} <span>{{ allNearbyMosque.mosques[0]['distance_meter'] }} m</span></h4>
+                                            <p *ngIf="mosque_0_prayer_time"> {{ allNearbyMosque.mosques[0]['today_prayer'][3].time }} </p>
+                                        </div>
+                                        <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                    </ion-item>
+                                    <ion-item *ngIf="allNearbyMosque.mosques[1]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[1]['id'] }}">
+                                        <div>
+                                            <h4>{{ allNearbyMosque.mosques[1]['name'] }} <span>{{ allNearbyMosque.mosques[1]['distance_meter'] }} m</span></h4>
+                                            <p *ngIf="mosque_1_prayer_time">{{ allNearbyMosque.mosques[1]['today_prayer'][3].time }}</p>
+                                        </div>
+                                        <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                    </ion-item>
+                                    <ion-item *ngIf="allNearbyMosque.mosques[2]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[2]['id'] }}">
+                                        <div>
+                                            <h4>{{ allNearbyMosque.mosques[2]['name'] }} <span>{{ allNearbyMosque.mosques[2]['distance_meter'] }} m</span></h4>
+                                            <p *ngIf="mosque_2_prayer_time">{{ allNearbyMosque.mosques[2]['today_prayer'][3].time }}</p>
+                                        </div>
+                                        <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                    </ion-item>
+                                    <ion-item routerLink="/nearby">
+                                        <div>
+                                            <h4>More Mosque Nearby</h4>
+                                        </div>
+                                        <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                    </ion-item>
+                                </ion-col>
+                                <ion-col *ngIf="!mosqueAvailable">
+                                    <h4> No mosque found !</h4>
+                                </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </ion-list>
+                <ion-list class="isha">
+                        <ion-grid>
+                            <ion-row class="ion-align-items-center">
+                                <ion-col class="left_side" size="4" class="ion-text-center">
+                                    <h3>Isha</h3>
+                                    <p> Started by</p>
+                                    <p>{{ isha_time }}</p>
+                                    <img src="assets/clock4pm.png" height="70" />
+                                </ion-col>
+                                <ion-col *ngIf="mosqueAvailable">
+                                        <ion-item *ngIf="allNearbyMosque.mosques[0]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[0]['id'] }}">
+                                            <div>
+                                                <h4> {{ allNearbyMosque.mosques[0]['name'] }} <span>{{ allNearbyMosque.mosques[0]['distance_meter'] }} m</span></h4>
+                                                <p *ngIf="mosque_0_prayer_time"> {{ allNearbyMosque.mosques[0]['today_prayer'][4].time }} </p>
+                                            </div>
+                                            <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                        </ion-item>
+                                        <ion-item *ngIf="allNearbyMosque.mosques[1]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[1]['id'] }}">
+                                            <div>
+                                                <h4>{{ allNearbyMosque.mosques[1]['name'] }} <span>{{ allNearbyMosque.mosques[1]['distance_meter'] }} m</span></h4>
+                                                <p *ngIf="mosque_1_prayer_time">{{ allNearbyMosque.mosques[1]['today_prayer'][4].time }}</p>
+                                            </div>
+                                            <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                        </ion-item>
+                                        <ion-item *ngIf="allNearbyMosque.mosques[2]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[2]['id'] }}">
+                                            <div>
+                                                <h4>{{ allNearbyMosque.mosques[2]['name'] }} <span>{{ allNearbyMosque.mosques[2]['distance_meter'] }} m</span></h4>
+                                                <p *ngIf="mosque_2_prayer_time">{{ allNearbyMosque.mosques[2]['today_prayer'][4].time }}</p>
+                                            </div>
+                                            <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                        </ion-item>
+                                        <ion-item routerLink="/nearby">
+                                            <div>
+                                                <h4>More Mosque Nearby</h4>
+                                            </div>
+                                            <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                        </ion-item>
+                                    </ion-col>
+                                    <ion-col *ngIf="!mosqueAvailable">
+                                        <h4> No mosque found !</h4>
+                                    </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </ion-list>
+                    <ion-list class="fajir">
+                        <ion-grid>
+                            <ion-row class="ion-align-items-center">
+                                <ion-col class="left_side" size="4" class="ion-text-center">
+                                    <h3>Fajr</h3>
+                                    <p> Started by</p>
+                                    <p>{{ fajar_time }}</p>
+                                    <img src="assets/clock4pm.png" height="70" />
+                                </ion-col>
+                                <ion-col *ngIf="mosqueAvailable">
+                                        <ion-item *ngIf="allNearbyMosque.mosques[0]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[0]['id'] }}">
+                                            <div>
+                                                <h4> {{ allNearbyMosque.mosques[0]['name'] }} <span>{{ allNearbyMosque.mosques[0]['distance_meter'] }} m</span></h4>
+                                                <p *ngIf="allNearbyMosque.mosques[0]['next_fazar'].time != ''"> {{ allNearbyMosque.mosques[0]['next_fazar'].time }} </p>
+                                            </div>
+                                            <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                        </ion-item>
+                                        <ion-item *ngIf="allNearbyMosque.mosques[1]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[1]['id'] }}">
+                                            <div>
+                                                <h4>{{ allNearbyMosque.mosques[1]['name'] }} <span>{{ allNearbyMosque.mosques[1]['distance_meter'] }} m</span></h4>
+                                                <p *ngIf="allNearbyMosque.mosques[1]['next_fazar'].time != ''">{{ allNearbyMosque.mosques[1]['next_fazar'].time }}</p>
+                                            </div>
+                                            <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                        </ion-item>
+                                        <ion-item *ngIf="allNearbyMosque.mosques[2]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[2]['id'] }}">
+                                            <div>
+                                                <h4>{{ allNearbyMosque.mosques[2]['name'] }} <span>{{ allNearbyMosque.mosques[2]['distance_meter'] }} m</span></h4>
+                                                <p *ngIf="allNearbyMosque.mosques[2]['next_fazar'].time != ''">{{ allNearbyMosque.mosques[2]['next_fazar'].time }}</p>
+                                            </div>
+                                            <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                        </ion-item>
+                                        <ion-item routerLink="/nearby">
+                                            <div>
+                                                <h4>More Mosque Nearby</h4>
+                                            </div>
+                                            <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                        </ion-item>
+                                    </ion-col>
+                                    <ion-col *ngIf="!mosqueAvailable">
+                                        <h4> No mosque found !</h4>
+                                    </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </ion-list>
+    </div>
+    <!-- ========================================================================= -->
+    <div *ngIf="upcomingWakt == 'asr'">
+            
+            <ion-list class="asr">
+                <ion-grid>
+                    <ion-row class="ion-align-items-center">
+                        <ion-col class="left_side" size="4" class="ion-text-center">
+                            <h3>Asr</h3>
+                            <p> Started by</p>
+                            <p>{{ asr_time }}</p>
+                            <img src="assets/clock4pm.png" height="70" />
+                        </ion-col>
+                        <ion-col *ngIf="mosqueAvailable">
+                                <ion-item *ngIf="allNearbyMosque.mosques[0]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[0]['id'] }}">
+                                    <div>
+                                        <h4> {{ allNearbyMosque.mosques[0]['name'] }} <span>{{ allNearbyMosque.mosques[0]['distance_meter'] }} m</span></h4>
+                                        <p *ngIf="mosque_0_prayer_time"> {{ allNearbyMosque.mosques[0]['today_prayer'][2].time }} </p>
+                                    </div>
+                                    <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                </ion-item>
+                                <ion-item *ngIf="allNearbyMosque.mosques[1]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[1]['id'] }}">
+                                    <div>
+                                        <h4>{{ allNearbyMosque.mosques[1]['name'] }} <span>{{ allNearbyMosque.mosques[1]['distance_meter'] }} m</span></h4>
+                                        <p *ngIf="mosque_1_prayer_time">{{ allNearbyMosque.mosques[1]['today_prayer'][2].time }}</p>
+                                    </div>
+                                    <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                </ion-item>
+                                <ion-item *ngIf="allNearbyMosque.mosques[2]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[2]['id'] }}">
+                                    <div>
+                                        <h4>{{ allNearbyMosque.mosques[2]['name'] }} <span>{{ allNearbyMosque.mosques[2]['distance_meter'] }} m</span></h4>
+                                        <p *ngIf="mosque_2_prayer_time">{{ allNearbyMosque.mosques[2]['today_prayer'][2].time }}</p>
+                                    </div>
+                                    <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                </ion-item>
+                                <ion-item routerLink="/nearby">
+                                    <div>
+                                        <h4>More Mosque Nearby</h4>
+                                    </div>
+                                    <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                </ion-item>
+                            </ion-col>
+                            <ion-col *ngIf="!mosqueAvailable">
+                                <h4> No mosque found !</h4>
+                            </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-list>
+            <ion-list class="maghrib">
+                <ion-grid>
+                    <ion-row class="ion-align-items-center">
+                        <ion-col class="left_side" size="4" class="ion-text-center">
+                            <h3>Maghrib</h3>
+                            <p> Started by</p>
+                            <p>{{ maghrib_time }}</p>
+                            <img src="assets/clock4pm.png" height="70" />
+                        </ion-col>
+                        <ion-col *ngIf="mosqueAvailable">
+                                <ion-item *ngIf="allNearbyMosque.mosques[0]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[0]['id'] }}">
+                                    <div>
+                                        <h4> {{ allNearbyMosque.mosques[0]['name'] }} <span>{{ allNearbyMosque.mosques[0]['distance_meter'] }} m</span></h4>
+                                        <p *ngIf="mosque_0_prayer_time"> {{ allNearbyMosque.mosques[0]['today_prayer'][3].time }} </p>
+                                    </div>
+                                    <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                </ion-item>
+                                <ion-item *ngIf="allNearbyMosque.mosques[1]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[1]['id'] }}">
+                                    <div>
+                                        <h4>{{ allNearbyMosque.mosques[1]['name'] }} <span>{{ allNearbyMosque.mosques[1]['distance_meter'] }} m</span></h4>
+                                        <p *ngIf="mosque_1_prayer_time">{{ allNearbyMosque.mosques[1]['today_prayer'][3].time }}</p>
+                                    </div>
+                                    <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                </ion-item>
+                                <ion-item *ngIf="allNearbyMosque.mosques[2]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[2]['id'] }}">
+                                    <div>
+                                        <h4>{{ allNearbyMosque.mosques[2]['name'] }} <span>{{ allNearbyMosque.mosques[2]['distance_meter'] }} m</span></h4>
+                                        <p *ngIf="mosque_2_prayer_time">{{ allNearbyMosque.mosques[2]['today_prayer'][3].time }}</p>
+                                    </div>
+                                    <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                </ion-item>
+                                <ion-item routerLink="/nearby">
+                                    <div>
+                                        <h4>More Mosque Nearby</h4>
+                                    </div>
+                                    <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                </ion-item>
+                            </ion-col>
+                            <ion-col *ngIf="!mosqueAvailable">
+                                <h4> No mosque found !</h4>
+                            </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-list>
+            <ion-list class="isha">
+                <ion-grid>
+                    <ion-row class="ion-align-items-center">
+                        <ion-col class="left_side" size="4" class="ion-text-center">
+                            <h3>Isha</h3>
+                            <p> Started by</p>
+                            <p>{{ isha_time }}</p>
+                            <img src="assets/clock4pm.png" height="70" />
+                        </ion-col>
+                        <ion-col *ngIf="mosqueAvailable">
+                                <ion-item *ngIf="allNearbyMosque.mosques[0]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[0]['id'] }}">
+                                    <div>
+                                        <h4> {{ allNearbyMosque.mosques[0]['name'] }} <span>{{ allNearbyMosque.mosques[0]['distance_meter'] }} m</span></h4>
+                                        <p *ngIf="mosque_0_prayer_time"> {{ allNearbyMosque.mosques[0]['today_prayer'][4].time }} </p>
+                                    </div>
+                                    <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                </ion-item>
+                                <ion-item *ngIf="allNearbyMosque.mosques[1]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[1]['id'] }}">
+                                    <div>
+                                        <h4>{{ allNearbyMosque.mosques[1]['name'] }} <span>{{ allNearbyMosque.mosques[1]['distance_meter'] }} m</span></h4>
+                                        <p *ngIf="mosque_1_prayer_time">{{ allNearbyMosque.mosques[1]['today_prayer'][4].time }}</p>
+                                    </div>
+                                    <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                </ion-item>
+                                <ion-item *ngIf="allNearbyMosque.mosques[2]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[2]['id'] }}">
+                                    <div>
+                                        <h4>{{ allNearbyMosque.mosques[2]['name'] }} <span>{{ allNearbyMosque.mosques[2]['distance_meter'] }} m</span></h4>
+                                        <p *ngIf="mosque_2_prayer_time">{{ allNearbyMosque.mosques[2]['today_prayer'][4].time }}</p>
+                                    </div>
+                                    <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                </ion-item>
+                                <ion-item routerLink="/nearby">
+                                    <div>
+                                        <h4>More Mosque Nearby</h4>
+                                    </div>
+                                    <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                </ion-item>
+                            </ion-col>
+                            <ion-col *ngIf="!mosqueAvailable">
+                                <h4> No mosque found !</h4>
+                            </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-list>
+            <ion-list class="fajir">
+                <ion-grid>
+                    <ion-row class="ion-align-items-center">
+                        <ion-col class="left_side" size="4" class="ion-text-center">
+                            <h3>Fajr</h3>
+                            <p> Started by</p>
+                            <p>{{ fajar_time }}</p>
+                            <img src="assets/clock4pm.png" height="70" />
+                        </ion-col>
+                        <ion-col *ngIf="mosqueAvailable">
+                            <ion-item *ngIf="allNearbyMosque.mosques[0]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[0]['id'] }}">
+                                <div>
+                                    <h4> {{ allNearbyMosque.mosques[0]['name'] }} <span>{{ allNearbyMosque.mosques[0]['distance_meter'] }} m</span></h4>
+                                    <p  *ngIf="allNearbyMosque.mosques[0]['next_fazar'].time != ''"> {{ allNearbyMosque.mosques[0]['next_fazar'].time }} </p>
+                                </div>
+                                <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                            </ion-item>
+                            <ion-item *ngIf="allNearbyMosque.mosques[1]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[1]['id'] }}">
+                                <div>
+                                    <h4>{{ allNearbyMosque.mosques[1]['name'] }} <span>{{ allNearbyMosque.mosques[1]['distance_meter'] }} m</span></h4>
+                                    <p *ngIf="allNearbyMosque.mosques[1]['next_fazar'].time != ''">{{ allNearbyMosque.mosques[1]['next_fazar'].time }}</p>
+                                </div>
+                                <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                            </ion-item>
+                            <ion-item *ngIf="allNearbyMosque.mosques[2]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[2]['id'] }}">
+                                <div>
+                                    <h4>{{ allNearbyMosque.mosques[2]['name'] }} <span>{{ allNearbyMosque.mosques[2]['distance_meter'] }} m</span></h4>
+                                    <p *ngIf="allNearbyMosque.mosques[2]['next_fazar'].time != ''">{{ allNearbyMosque.mosques[2]['next_fazar'].time }}</p>
+                                </div>
+                                <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                            </ion-item>
+                            <ion-item routerLink="/nearby">
+                                <div>
+                                    <h4>More Mosque Nearby</h4>
+                                </div>
+                                <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                            </ion-item>
+                        </ion-col>
+                        <ion-col *ngIf="!mosqueAvailable">
+                            <h4> No mosque found !</h4>
+                        </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-list>
+            <ion-list class="jahar">
+                <ion-grid>
+                    <ion-row class="ion-align-items-center">
+                        <ion-col class="left_side" size="4" class="ion-text-center">
+                            <h3>Zuhr</h3>
+                            <p>Started</p>
+                            <p>{{ zuhr_time }}</p>
+                            <img src="assets/clock4pm.png" height="70" />
+                        </ion-col>
+                        <ion-col *ngIf="mosqueAvailable">
+                                <ion-item *ngIf="allNearbyMosque.mosques[0]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[0]['id'] }}">
+                                    <div>
+                                        <h4> {{ allNearbyMosque.mosques[0]['name'] }} <span>{{ allNearbyMosque.mosques[0]['distance_meter'] }} m</span></h4>
+                                        <p *ngIf="allNearbyMosque.mosques[0]['next_duhr'].time != ''"> {{ allNearbyMosque.mosques[0]['next_duhr'].time }} </p>
+                                    </div>
+                                    <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                </ion-item>
+                                <ion-item *ngIf="allNearbyMosque.mosques[1]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[1]['id'] }}">
+                                    <div>
+                                        <h4>{{ allNearbyMosque.mosques[1]['name'] }} <span>{{ allNearbyMosque.mosques[1]['distance_meter'] }} m</span></h4>
+                                        <p *ngIf="allNearbyMosque.mosques[1]['next_duhr'].time != ''">{{ allNearbyMosque.mosques[1]['next_duhr'].time }}</p>
+                                    </div>
+                                    <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                </ion-item>
+                                <ion-item *ngIf="allNearbyMosque.mosques[2]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[2]['id'] }}">
+                                    <div>
+                                        <h4>{{ allNearbyMosque.mosques[2]['name'] }} <span>{{ allNearbyMosque.mosques[2]['distance_meter'] }} m</span></h4>
+                                        <p *ngIf="allNearbyMosque.mosques[2]['next_duhr'].time != ''">{{ allNearbyMosque.mosques[2]['next_duhr'].time }}</p>
+                                    </div>
+                                    <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                </ion-item>
+                                <ion-item routerLink="/nearby">
+                                    <div>
+                                        <h4>More Mosque Nearby</h4>
+                                    </div>
+                                    <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                </ion-item>
+                            </ion-col>
+                            <ion-col *ngIf="!mosqueAvailable">
+                                <h4> No mosque found !</h4>
+                            </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-list>
+                    
+    </div>
+    <!-- =============================================================== -->
+    <div *ngIf="upcomingWakt == 'maghrib'">
+            
+            <ion-list class="maghrib">
+                <ion-grid>
+                    <ion-row class="ion-align-items-center">
+                        <ion-col class="left_side" size="4" class="ion-text-center">
+                            <h3>Maghrib</h3>
+                            <p> Started by</p>
+                            <p>{{ maghrib_time }}</p>
+                            <img src="assets/clock4pm.png" height="70" />
+                        </ion-col>
+                        <ion-col *ngIf="mosqueAvailable">
+                                <ion-item *ngIf="allNearbyMosque.mosques[0]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[0]['id'] }}">
+                                    <div>
+                                        <h4> {{ allNearbyMosque.mosques[0]['name'] }} <span>{{ allNearbyMosque.mosques[0]['distance_meter'] }} m</span></h4>
+                                        <p *ngIf="mosque_0_prayer_time"> {{ allNearbyMosque.mosques[0]['today_prayer'][3].time }} </p>
+                                    </div>
+                                    <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                </ion-item>
+                                <ion-item *ngIf="allNearbyMosque.mosques[1]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[1]['id'] }}">
+                                    <div>
+                                        <h4>{{ allNearbyMosque.mosques[1]['name'] }} <span>{{ allNearbyMosque.mosques[1]['distance_meter'] }} m</span></h4>
+                                        <p *ngIf="mosque_1_prayer_time">{{ allNearbyMosque.mosques[1]['today_prayer'][3].time }}</p>
+                                    </div>
+                                    <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                </ion-item>
+                                <ion-item *ngIf="allNearbyMosque.mosques[2]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[2]['id'] }}">
+                                    <div>
+                                        <h4>{{ allNearbyMosque.mosques[2]['name'] }} <span>{{ allNearbyMosque.mosques[2]['distance_meter'] }} m</span></h4>
+                                        <p *ngIf="mosque_2_prayer_time">{{ allNearbyMosque.mosques[2]['today_prayer'][3].time }}</p>
+                                    </div>
+                                    <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                </ion-item>
+                                <ion-item routerLink="/nearby">
+                                    <div>
+                                        <h4>More Mosque Nearby</h4>
+                                    </div>
+                                    <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                </ion-item>
+                            </ion-col>
+                            <ion-col *ngIf="!mosqueAvailable">
+                                <h4> No mosque found !</h4>
+                            </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-list>
+            <ion-list class="isha">
+                <ion-grid>
+                    <ion-row class="ion-align-items-center">
+                        <ion-col class="left_side" size="4" class="ion-text-center">
+                            <h3>Isha</h3>
+                            <p> Started by</p>
+                            <p>{{ isha_time }}</p>
+                            <img src="assets/clock4pm.png" height="70" />
+                        </ion-col>
+                        <ion-col *ngIf="mosqueAvailable">
+                                <ion-item *ngIf="allNearbyMosque.mosques[0]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[0]['id'] }}">
+                                    <div>
+                                        <h4> {{ allNearbyMosque.mosques[0]['name'] }} <span>{{ allNearbyMosque.mosques[0]['distance_meter'] }} m</span></h4>
+                                        <p *ngIf="mosque_0_prayer_time"> {{ allNearbyMosque.mosques[0]['today_prayer'][4].time }} </p>
+                                    </div>
+                                    <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                </ion-item>
+                                <ion-item *ngIf="allNearbyMosque.mosques[1]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[1]['id'] }}">
+                                    <div>
+                                        <h4>{{ allNearbyMosque.mosques[1]['name'] }} <span>{{ allNearbyMosque.mosques[1]['distance_meter'] }} m</span></h4>
+                                        <p *ngIf="mosque_1_prayer_time">{{ allNearbyMosque.mosques[1]['today_prayer'][4].time }}</p>
+                                    </div>
+                                    <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                </ion-item>
+                                <ion-item *ngIf="allNearbyMosque.mosques[2]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[2]['id'] }}">
+                                    <div>
+                                        <h4>{{ allNearbyMosque.mosques[2]['name'] }} <span>{{ allNearbyMosque.mosques[2]['distance_meter'] }} m</span></h4>
+                                        <p *ngIf="mosque_2_prayer_time">{{ allNearbyMosque.mosques[2]['today_prayer'][4].time }}</p>
+                                    </div>
+                                    <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                </ion-item>
+                                <ion-item routerLink="/nearby">
+                                    <div>
+                                        <h4>More Mosque Nearby</h4>
+                                    </div>
+                                    <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                </ion-item>
+                            </ion-col>
+                            <ion-col *ngIf="!mosqueAvailable">
+                                <h4> No mosque found !</h4>
+                            </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-list>
+            <ion-list class="fajir">
+                    <ion-grid>
+                        <ion-row class="ion-align-items-center">
+                            <ion-col class="left_side" size="4" class="ion-text-center">
+                                <h3>Fajr</h3>
+                                <p> Started by</p>
+                                <p>{{ fajar_time }}</p>
+                                <img src="assets/clock4pm.png" height="70" />
+                            </ion-col>
+                            <ion-col *ngIf="mosqueAvailable">
+                                <ion-item *ngIf="allNearbyMosque.mosques[0]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[0]['id'] }}">
+                                    <div>
+                                        <h4> {{ allNearbyMosque.mosques[0]['name'] }} <span>{{ allNearbyMosque.mosques[0]['distance_meter'] }} m</span></h4>
+                                        <p *ngIf="allNearbyMosque.mosques[0]['next_fazar'].time != ''"> {{ allNearbyMosque.mosques[0]['next_fazar'].time }} </p>
+                                    </div>
+                                    <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                </ion-item>
+                                <ion-item *ngIf="allNearbyMosque.mosques[1]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[1]['id'] }}">
+                                    <div>
+                                        <h4>{{ allNearbyMosque.mosques[1]['name'] }} <span>{{ allNearbyMosque.mosques[1]['distance_meter'] }} m</span></h4>
+                                        <p *ngIf="allNearbyMosque.mosques[1]['next_fazar'].time != ''">{{ allNearbyMosque.mosques[1]['next_fazar'].time }}</p>
+                                    </div>
+                                    <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                </ion-item>
+                                <ion-item *ngIf="allNearbyMosque.mosques[2]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[2]['id'] }}">
+                                    <div>
+                                        <h4>{{ allNearbyMosque.mosques[2]['name'] }} <span>{{ allNearbyMosque.mosques[2]['distance_meter'] }} m</span></h4>
+                                        <p *ngIf="allNearbyMosque.mosques[2]['next_fazar'].time != ''">{{ allNearbyMosque.mosques[2]['next_fazar'].time }}</p>
+                                    </div>
+                                    <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                </ion-item>
+                                <ion-item routerLink="/nearby">
+                                    <div>
+                                        <h4>More Mosque Nearby</h4>
+                                    </div>
+                                    <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                </ion-item>
+                            </ion-col>
+                            <ion-col *ngIf="!mosqueAvailable">
+                                <h4> No mosque found !</h4>
+                            </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-list>
+                <ion-list class="jahar">
+                    <ion-grid>
+                        <ion-row class="ion-align-items-center">
+                            <ion-col class="left_side" size="4" class="ion-text-center">
+                                <h3>Zuhr</h3>
+                                <p>Started</p>
+                                <p>{{ zuhr_time }}</p>
+                                <img src="assets/clock4pm.png" height="70" />
+                            </ion-col>
+                            <ion-col *ngIf="mosqueAvailable">
+                                    <ion-item *ngIf="allNearbyMosque.mosques[0]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[0]['id'] }}">
+                                        <div>
+                                            <h4> {{ allNearbyMosque.mosques[0]['name'] }} <span>{{ allNearbyMosque.mosques[0]['distance_meter'] }} m</span></h4>
+                                            <p *ngIf="allNearbyMosque.mosques[0]['next_duhr'].time != ''"> {{ allNearbyMosque.mosques[0]['next_duhr'].time }} </p>
+                                        </div>
+                                        <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                    </ion-item>
+                                    <ion-item *ngIf="allNearbyMosque.mosques[1]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[1]['id'] }}">
+                                        <div>
+                                            <h4>{{ allNearbyMosque.mosques[1]['name'] }} <span>{{ allNearbyMosque.mosques[1]['distance_meter'] }} m</span></h4>
+                                            <p *ngIf="allNearbyMosque.mosques[1]['next_duhr'].time != ''">{{ allNearbyMosque.mosques[1]['next_duhr'].time }}</p>
+                                        </div>
+                                        <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                    </ion-item>
+                                    <ion-item *ngIf="allNearbyMosque.mosques[2]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[2]['id'] }}">
+                                        <div>
+                                            <h4>{{ allNearbyMosque.mosques[2]['name'] }} <span>{{ allNearbyMosque.mosques[2]['distance_meter'] }} m</span></h4>
+                                            <p *ngIf="allNearbyMosque.mosques[2]['next_duhr'].time != ''">{{ allNearbyMosque.mosques[2]['next_duhr'].time }}</p>
+                                        </div>
+                                        <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                    </ion-item>
+                                    <ion-item routerLink="/nearby">
+                                        <div>
+                                            <h4>More Mosque Nearby</h4>
+                                        </div>
+                                        <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                    </ion-item>
+                                </ion-col>
+                                <ion-col *ngIf="!mosqueAvailable">
+                                    <h4> No mosque found !</h4>
+                                </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </ion-list>
+                <ion-list class="asr">
+                        <ion-grid>
+                            <ion-row class="ion-align-items-center">
+                                <ion-col class="left_side" size="4" class="ion-text-center">
+                                    <h3>Asr</h3>
+                                    <p>Started</p>
+                                    <p>{{ asr_time }}</p>
+                                    <img src="assets/clock4pm.png" height="70" />
+                                </ion-col>
+                                <ion-col *ngIf="mosqueAvailable">
+                                        <ion-item *ngIf="allNearbyMosque.mosques[0]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[0]['id'] }}">
+                                            <div>
+                                                <h4> {{ allNearbyMosque.mosques[0]['name'] }} <span>{{ allNearbyMosque.mosques[0]['distance_meter'] }} m</span></h4>
+                                                <p *ngIf="allNearbyMosque.mosques[0]['next_asar'].time != ''"> {{ allNearbyMosque.mosques[0]['next_asar'].time }} </p>
+                                            </div>
+                                            <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                        </ion-item>
+                                        <ion-item *ngIf="allNearbyMosque.mosques[1]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[1]['id'] }}">
+                                            <div>
+                                                <h4>{{ allNearbyMosque.mosques[1]['name'] }} <span>{{ allNearbyMosque.mosques[1]['distance_meter'] }} m</span></h4>
+                                                <p *ngIf="allNearbyMosque.mosques[1]['next_asar'].time != ''">{{ allNearbyMosque.mosques[1]['next_asar'].time }}</p>
+                                            </div>
+                                            <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                        </ion-item>
+                                        <ion-item *ngIf="allNearbyMosque.mosques[2]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[2]['id'] }}">
+                                            <div>
+                                                <h4>{{ allNearbyMosque.mosques[2]['name'] }} <span>{{ allNearbyMosque.mosques[2]['distance_meter'] }} m</span></h4>
+                                                <p *ngIf="allNearbyMosque.mosques[2]['next_asar'].time != ''">{{ allNearbyMosque.mosques[2]['next_asar'].time }}</p>
+                                            </div>
+                                            <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                        </ion-item>
+                                        <ion-item routerLink="/nearby">
+                                            <div>
+                                                <h4>More Mosque Nearby</h4>
+                                            </div>
+                                            <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                        </ion-item>
+                                    </ion-col>
+                                    <ion-col *ngIf="!mosqueAvailable">
+                                        <h4> No mosque found !</h4>
+                                    </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </ion-list>
+                    
+    </div>
+    <!-- ============================================================== -->
+    <div *ngIf="upcomingWakt == 'isha'">
+            
+            <ion-list class="isha">
+                <ion-grid>
+                    <ion-row class="ion-align-items-center">
+                        <ion-col class="left_side" size="4" class="ion-text-center">
+                            <h3>Isha</h3>
+                            <p> Started by</p>
+                            <p>{{ isha_time }}</p>
+                            <img src="assets/clock4pm.png" height="70" />
+                        </ion-col>
+                        <ion-col *ngIf="mosqueAvailable">
+                                <ion-item *ngIf="allNearbyMosque.mosques[0]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[0]['id'] }}">
+                                    <div>
+                                        <h4> {{ allNearbyMosque.mosques[0]['name'] }} <span>{{ allNearbyMosque.mosques[0]['distance_meter'] }} m</span></h4>
+                                        <p *ngIf="mosque_0_prayer_time"> {{ allNearbyMosque.mosques[0]['today_prayer'][4].time }} </p>
+                                    </div>
+                                    <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                </ion-item>
+                                <ion-item *ngIf="allNearbyMosque.mosques[1]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[1]['id'] }}">
+                                    <div>
+                                        <h4>{{ allNearbyMosque.mosques[1]['name'] }} <span>{{ allNearbyMosque.mosques[1]['distance_meter'] }} m</span></h4>
+                                        <p *ngIf="mosque_1_prayer_time">{{ allNearbyMosque.mosques[1]['today_prayer'][4].time }}</p>
+                                    </div>
+                                    <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                </ion-item>
+                                <ion-item *ngIf="allNearbyMosque.mosques[2]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[2]['id'] }}">
+                                    <div>
+                                        <h4>{{ allNearbyMosque.mosques[2]['name'] }} <span>{{ allNearbyMosque.mosques[2]['distance_meter'] }} m</span></h4>
+                                        <p *ngIf="mosque_2_prayer_time">{{ allNearbyMosque.mosques[2]['today_prayer'][4].time }}</p>
+                                    </div>
+                                    <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                </ion-item>
+                                <ion-item routerLink="/nearby">
+                                    <div>
+                                        <h4>More Mosque Nearby</h4>
+                                    </div>
+                                    <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                </ion-item>
+                            </ion-col>
+                            <ion-col *ngIf="!mosqueAvailable">
+                                <h4> No mosque found !</h4>
+                            </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-list>
+            <ion-list class="fajir">
+                    <ion-grid>
+                        <ion-row class="ion-align-items-center">
+                            <ion-col class="left_side" size="4" class="ion-text-center">
+                                <h3>Fajr</h3>
+                                <p> Started by</p>
+                                <p>{{ fajar_time }}</p>
+                                <img src="assets/clock4pm.png" height="70" />
+                            </ion-col>
+                            <ion-col *ngIf="mosqueAvailable">
+                                <ion-item *ngIf="allNearbyMosque.mosques[0]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[0]['id'] }}">
+                                    <div>
+                                        <h4> {{ allNearbyMosque.mosques[0]['name'] }} <span>{{ allNearbyMosque.mosques[0]['distance_meter'] }} m</span></h4>
+                                        <p *ngIf="allNearbyMosque.mosques[0]['next_fazar'].time != ''"> {{ allNearbyMosque.mosques[0]['next_fazar'].time }} </p>
+                                    </div>
+                                    <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                </ion-item>
+                                <ion-item *ngIf="allNearbyMosque.mosques[1]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[1]['id'] }}">
+                                    <div>
+                                        <h4>{{ allNearbyMosque.mosques[1]['name'] }} <span>{{ allNearbyMosque.mosques[1]['distance_meter'] }} m</span></h4>
+                                        <p *ngIf="allNearbyMosque.mosques[1]['next_fazar'].time != ''">{{ allNearbyMosque.mosques[1]['next_fazar'].time }}</p>
+                                    </div>
+                                    <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                </ion-item>
+                                <ion-item *ngIf="allNearbyMosque.mosques[2]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[2]['id'] }}">
+                                    <div>
+                                        <h4>{{ allNearbyMosque.mosques[2]['name'] }} <span>{{ allNearbyMosque.mosques[2]['distance_meter'] }} m</span></h4>
+                                        <p *ngIf="allNearbyMosque.mosques[2]['next_fazar'].time != ''">{{ allNearbyMosque.mosques[2]['next_fazar'].time }}</p>
+                                    </div>
+                                    <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                </ion-item>
+                                <ion-item routerLink="/nearby">
+                                    <div>
+                                        <h4>More Mosque Nearby</h4>
+                                    </div>
+                                    <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                </ion-item>
+                            </ion-col>
+                            <ion-col *ngIf="!mosqueAvailable">
+                                <h4> No mosque found !</h4>
+                            </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-list>
+                <ion-list class="jahar">
+                    <ion-grid>
+                        <ion-row class="ion-align-items-center">
+                            <ion-col class="left_side" size="4" class="ion-text-center">
+                                <h3>Zuhr</h3>
+                                <p>Started</p>
+                                <p>{{ zuhr_time }}</p>
+                                <img src="assets/clock4pm.png" height="70" />
+                            </ion-col>
+                            <ion-col *ngIf="mosqueAvailable">
+                                    <ion-item *ngIf="allNearbyMosque.mosques[0]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[0]['id'] }}">
+                                        <div>
+                                            <h4> {{ allNearbyMosque.mosques[0]['name'] }} <span>{{ allNearbyMosque.mosques[0]['distance_meter'] }} m</span></h4>
+                                            <p *ngIf="allNearbyMosque.mosques[0]['next_duhr'].time != ''"> {{ allNearbyMosque.mosques[0]['next_duhr'].time }} </p>
+                                        </div>
+                                        <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                    </ion-item>
+                                    <ion-item *ngIf="allNearbyMosque.mosques[1]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[1]['id'] }}">
+                                        <div>
+                                            <h4>{{ allNearbyMosque.mosques[1]['name'] }} <span>{{ allNearbyMosque.mosques[1]['distance_meter'] }} m</span></h4>
+                                            <p *ngIf="allNearbyMosque.mosques[1]['next_duhr'].time != ''">{{ allNearbyMosque.mosques[1]['next_duhr'].time }}</p>
+                                        </div>
+                                        <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                    </ion-item>
+                                    <ion-item *ngIf="allNearbyMosque.mosques[2]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[2]['id'] }}">
+                                        <div>
+                                            <h4>{{ allNearbyMosque.mosques[2]['name'] }} <span>{{ allNearbyMosque.mosques[2]['distance_meter'] }} m</span></h4>
+                                            <p *ngIf="allNearbyMosque.mosques[2]['next_duhr'].time != ''">{{ allNearbyMosque.mosques[2]['next_duhr'].time }}</p>
+                                        </div>
+                                        <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                    </ion-item>
+                                    <ion-item routerLink="/nearby">
+                                        <div>
+                                            <h4>More Mosque Nearby</h4>
+                                        </div>
+                                        <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                    </ion-item>
+                                </ion-col>
+                                <ion-col *ngIf="!mosqueAvailable">
+                                    <h4> No mosque found !</h4>
+                                </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </ion-list>
+                <ion-list class="asr">
+                        <ion-grid>
+                            <ion-row class="ion-align-items-center">
+                                <ion-col class="left_side" size="4" class="ion-text-center">
+                                    <h3>Asr</h3>
+                                    <p>Started</p>
+                                    <p>{{ asr_time }}</p>
+                                    <img src="assets/clock4pm.png" height="70" />
+                                </ion-col>
+                                <ion-col *ngIf="mosqueAvailable">
+                                        <ion-item *ngIf="allNearbyMosque.mosques[0]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[0]['id'] }}">
+                                            <div>
+                                                <h4> {{ allNearbyMosque.mosques[0]['name'] }} <span>{{ allNearbyMosque.mosques[0]['distance_meter'] }} m</span></h4>
+                                                <p *ngIf="allNearbyMosque.mosques[0]['next_asar'].time != ''"> {{ allNearbyMosque.mosques[0]['next_asar'].time }} </p>
+                                            </div>
+                                            <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                        </ion-item>
+                                        <ion-item *ngIf="allNearbyMosque.mosques[1]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[1]['id'] }}">
+                                            <div>
+                                                <h4>{{ allNearbyMosque.mosques[1]['name'] }} <span>{{ allNearbyMosque.mosques[1]['distance_meter'] }} m</span></h4>
+                                                <p *ngIf="allNearbyMosque.mosques[1]['next_asar'].time != ''">{{ allNearbyMosque.mosques[1]['next_asar'].time }}</p>
+                                            </div>
+                                            <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                        </ion-item>
+                                        <ion-item *ngIf="allNearbyMosque.mosques[2]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[2]['id'] }}">
+                                            <div>
+                                                <h4>{{ allNearbyMosque.mosques[2]['name'] }} <span>{{ allNearbyMosque.mosques[2]['distance_meter'] }} m</span></h4>
+                                                <p *ngIf="allNearbyMosque.mosques[2]['next_asar'].time != ''">{{ allNearbyMosque.mosques[2]['next_asar'].time }}</p>
+                                            </div>
+                                            <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                        </ion-item>
+                                        <ion-item routerLink="/nearby">
+                                            <div>
+                                                <h4>More Mosque Nearby</h4>
+                                            </div>
+                                            <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                        </ion-item>
+                                    </ion-col>
+                                    <ion-col *ngIf="!mosqueAvailable">
+                                        <h4> No mosque found !</h4>
+                                    </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </ion-list>
+                    <ion-list class="maghrib">
+                            <ion-grid>
+                                <ion-row class="ion-align-items-center">
+                                    <ion-col class="left_side" size="4" class="ion-text-center">
+                                        <h3>Maghrib</h3>
+                                        <p>Started</p>
+                                        <p>{{ maghrib_time }}</p>
+                                        <img src="assets/clock4pm.png" height="70" />
+                                    </ion-col>
+                                    <ion-col *ngIf="mosqueAvailable">
+                                            <ion-item *ngIf="allNearbyMosque.mosques[0]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[0]['id'] }}">
+                                                <div>
+                                                    <h4> {{ allNearbyMosque.mosques[0]['name'] }} <span>{{ allNearbyMosque.mosques[0]['distance_meter'] }} m</span></h4>
+                                                    <p *ngIf="allNearbyMosque.mosques[0]['next_maghrib'].time != ''"> {{ allNearbyMosque.mosques[0]['next_maghrib'].time }} </p>
+                                                </div>
+                                                <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                            </ion-item>
+                                            <ion-item *ngIf="allNearbyMosque.mosques[1]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[1]['id'] }}">
+                                                <div>
+                                                    <h4>{{ allNearbyMosque.mosques[1]['name'] }} <span>{{ allNearbyMosque.mosques[1]['distance_meter'] }} m</span></h4>
+                                                    <p *ngIf="allNearbyMosque.mosques[1]['next_maghrib'].time != ''">{{ allNearbyMosque.mosques[1]['next_maghrib'].time }}</p>
+                                                </div>
+                                                <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                            </ion-item>
+                                            <ion-item *ngIf="allNearbyMosque.mosques[2]" routerLink="/mosquedetails/{{ allNearbyMosque.mosques[2]['id'] }}">
+                                                <div>
+                                                    <h4>{{ allNearbyMosque.mosques[2]['name'] }} <span>{{ allNearbyMosque.mosques[2]['distance_meter'] }} m</span></h4>
+                                                    <p *ngIf="allNearbyMosque.mosques[2]['next_maghrib'].time != ''">{{ allNearbyMosque.mosques[2]['next_maghrib'].time }}</p>
+                                                </div>
+                                                <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                            </ion-item>
+                                            <ion-item routerLink="/nearby">
+                                                <div>
+                                                    <h4>More Mosque Nearby</h4>
+                                                </div>
+                                                <ion-icon slot="end" name="arrow-forward" class="ss_arrows"></ion-icon>
+                                            </ion-item>
+                                        </ion-col>
+                                        <ion-col *ngIf="!mosqueAvailable">
+                                            <h4> No mosque found !</h4>
+                                        </ion-col>
+                                </ion-row>
+                            </ion-grid>
+                        </ion-list>
+                    
+    </div>
+    
+</ion-content>

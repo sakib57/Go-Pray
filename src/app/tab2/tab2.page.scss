@@ -1,0 +1,63 @@
+ ion-toolbar {
+     --min-height: 54px;
+     padding: 0px 20px !important;
+     ion-title {
+         padding-inline-start: 40px !important;
+     }
+     .ss_bookmark {
+         position: absolute;
+         top: -26px;
+         font-size: 50px;
+         left: -16px;
+         color: #ffce00;
+     }
+ }
+ 
+ .ss_quran_list {
+     h3 {
+         font-size: 16px;
+         margin-top: 0;
+         margin-bottom: 0;
+     }
+     p {
+         margin: 0;
+         font-size: 13px;
+         color: #888;
+     }
+     .ss_countss {
+         position: relative;
+         span {
+             position: absolute;
+             width: 100%;
+             text-align: center;
+             left: 0;
+             top: 23%;
+             font-size: 13px;
+             color: #42bd5c;
+             font-weight: bold;
+         }
+     }
+     ion-item:nth-child(2n+1) {
+         background: #f4fbfd;
+         --background: #f4fbfd;
+     }
+ }
+ 
+ .ss_banner {
+     position: relative;
+     margin-inline-start: 0px;
+     margin-inline-end: 0px;
+     margin-top: 0;
+     border-radius: 0;
+     .banner_content {
+         position: absolute;
+         top: 0;
+         left: 0;
+         width: 100%;
+         bottom: 0;
+         right: 0;
+         background: rgba(0, 0, 0, .7);
+         padding: 15px;
+         color: #fff;
+     }
+ }

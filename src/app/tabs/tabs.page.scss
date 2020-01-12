@@ -1,0 +1,51 @@
+  ion-tab-bar {
+      ion-tab-button {
+          ion-icon {
+              font-size: 24px;
+          }
+      }
+  }
+  
+  ion-fab {
+      ion-fab-button {}
+      ion-tab-bar {
+          ion-tab-button {
+              ion-icon {
+                  font-size: 24px;
+              }
+          }
+      }
+      .ss_menubtn {
+          position: fixed;
+          bottom: 70px;
+          right: 15px;
+          z-index: 102;
+      }
+      ion-fab-list {
+          position: fixed;
+          left: 0;
+          top: 0;
+          background: #fff;
+          width: 100%;
+          height: 100%;
+          bottom: 0;
+          margin-left: 0;
+          z-index: 100;
+          ion-grid {
+              text-align: center;
+              ion-col {
+                  padding: 20px 20px;
+                  max-width: 130px;
+                  font-size: 18px;
+                  line-height: 20px;
+                  ion-img {
+                      overflow: hidden;
+                      background: #333333;
+                      border-radius: 50%;
+                      padding: 15px;
+                      margin-bottom: 10px;
+                  }
+              }
+          }
+      }
+  }

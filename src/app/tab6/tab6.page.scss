@@ -1,0 +1,96 @@
+ion-toolbar {
+    ion-icon {
+        font-size: 30px;
+    }
+    .md.ss_searchbar {
+        input {
+            --box-shadow: none !important;
+        }
+    }
+    .searchbar-input.sc-ion-searchbar-md {
+        box-shadow: none !important;
+        --box-shadow: none !important;
+    }
+}
+
+ion-list {
+    padding: 0;
+    margin-bottom: 0;
+    ion-grid {
+        background: url(../../assets/isha_bg.jpg) 0 0/100% 100% no-repeat !important;
+        --background: url(../../assets/isha_bg.jpg) 0 0/100% 100% no-repeat !important;
+        color: #fff;
+        padding: 0;
+        ion-col {
+            padding: 0;
+            ion-item {
+                .ss_arrows {
+                    color: #c0c0c0;
+                }
+                .ios.ss_arrows {
+                    display: none
+                }
+                background: rgba(255, 255, 255, .7);
+                --background: rgba(255, 255, 255, .7);
+                h4 {
+                    font-size: 16px;
+                    color: #333;
+                    span {
+                        font-size: 14px;
+                        color: #666;
+                    }
+                }
+                p {
+                    font-size: 14px;
+                    color: #666;
+                    margin: 0;
+                }
+                ion-icon {
+                    --color: #666;
+                }
+            }
+        }
+        .left_side {
+            --color: #fff;
+            p {
+                margin: 3px;
+            }
+            img {
+                margin-top: 20px;
+            }
+        }
+    }
+}
+
+.fajir {
+    ion-grid {
+        background: url(../../assets/fajar.jpg) 0 0/100% 100% no-repeat !important;
+        --background: url(../../assets/fajar.jpg) 0 0/100% 100% no-repeat !important;
+    }
+}
+
+.jahar {
+    ion-grid {
+        background: url(../../assets/jahar.jpg) 0 0/100% 100% no-repeat !important;
+        --background: url(../../assets/jahar.jpg) 0 0/100% 100% no-repeat !important;
+    }
+}
+
+.asr {
+    ion-grid {
+        background: url(../../assets/asar.jpg) 0 0/100% 100% no-repeat !important;
+        --background: url(../../assets/asar.jpg) 0 0/100% 100% no-repeat !important;
+    }
+}
+.maghrib {
+    ion-grid {
+        background: url(../../assets/magrib.jpg) 0 0/100% 100% no-repeat !important;
+        --background: url(../../assets/magrib.jpg) 0 0/100% 100% no-repeat !important;
+    }
+}
+.isha {
+    ion-grid {
+        background: url(../../assets/isha.jpg) 0 0/100% 100% no-repeat !important;
+        --background: url(../../assets/isha.jpg) 0 0/100% 100% no-repeat !important;
+    }
+}

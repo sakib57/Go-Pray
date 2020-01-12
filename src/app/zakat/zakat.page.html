@@ -1,0 +1,86 @@
+<ion-header>
+    <ion-toolbar color="success">
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="arrow-back"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Zakat</ion-title>
+
+    </ion-toolbar>
+</ion-header>
+<ion-content padding>
+    <h3>What is zakat</h3>
+    <p> Zakat, the giving of alms to the poor and needy, is one of the five pillars of Islam (the others are declaration of faith, prayer, fasting in Ramadan and Hajj). It is obligatory upon every adult Muslim of sound mind and means.</p>
+
+    <p>The individual must own a specific amount of wealth or savings (after living costs, expenses etc). This is referred to as Nisaab and is the threshold at which Zakat becomes payable. The amount of Zakat to be paid is 2.5% of Nisaab .</p>
+
+    <p> <em> “The alms are only for the Fuqara’ (the poor), and Al-Masakin (the needy) and those employed to collect (the funds); and to attract the hearts of those who have been inclined (towards Islam); and to free the captives; and for those in debt; and for
+        Allah’s Cause, and for the wayfarer (a traveler who is cut off from everything); a duty imposed by Allah. And Allah is All-Knower, All-Wise.” [Al-Quran 9:60] </em></p>
+
+    <p><em>“They ask you as to what they should spend. Say: Whatever wealth you spend, it is for the parents and the near of kin and the orphans and the needy and the wayfarer, and whatever good you do, Allah surely knows it.” [Al-Quran 2:215]</em></p>
+    <h3>Zakat Calculator</h3>
+    <h4>NISAB VALUE: </h4>
+    <p><strong>(Silver)</strong> 612.36g equating to $220.45</p>
+    <p><strong>(Gold)</strong> 87.48g equating to $2815.98</p>
+    <ion-list>
+        <h5>ENTER ALL ASSETS THAT HAVE BEEN IN YOUR POSSESSION OVER A LUNAR YEAR IN THE TEXT BOXES BELOW:</h5>
+        <ion-item>
+            <ion-label>$</ion-label>
+            <ion-input name="name" type="number" placeholder="Value of Gold" ngModel required></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>$</ion-label>
+            <ion-input name="name" type="number" placeholder="Value of Silver" ngModel required></ion-input>
+        </ion-item>
+
+        <h4>CASH</h4>
+        <ion-item>
+            <ion-label>$</ion-label>
+            <ion-input name="name" type="number" placeholder="In hand and in bank accounts
+" ngModel required></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>$</ion-label>
+            <ion-input name="name" type="number" placeholder="Deposited for some future purpose, e.g. Hajj" ngModel required></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>$</ion-label>
+            <ion-input name="name" type="number" placeholder="Given out in loans" ngModel required></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>$</ion-label>
+            <ion-input name="name" type="number" placeholder="Business investments, shares, saving certificates, pensions funded by money in ones possesssion" ngModel required></ion-input>
+        </ion-item>
+        <h4>TRADE GOODS</h4>
+        <ion-item>
+            <ion-label>$</ion-label>
+            <ion-input name="name" type="number" placeholder="Value of Stock" ngModel required></ion-input>
+        </ion-item>
+        <h4>LIABILITIES</h4>
+        <ion-item>
+            <ion-label>$</ion-label>
+            <ion-input name="name" type="number" placeholder="Borrowed money, goods bought on credit" ngModel required></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>$</ion-label>
+            <ion-input name="name" type="number" placeholder="Wages due to employees" ngModel required></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>$</ion-label>
+            <ion-input name="name" type="number" placeholder="Taxes, rent, utility bills due immediately" ngModel required></ion-input>
+        </ion-item>
+        <br/>
+        <div>
+            <ion-button size="medium" type="submit">Calculator</ion-button>
+            <ion-button size="medium" type="submit" color="success">rest</ion-button>
+        </div>
+
+    </ion-list>
+    <ion-list>
+        <ion-item color="success">
+            <ion-label> Total Value: $2990.00 </ion-label>
+        </ion-item>
+        <ion-item color="success">
+            <ion-label>Total Due: $0.00</ion-label>
+        </ion-item>
+    </ion-list>
+</ion-content>

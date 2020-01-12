@@ -1,0 +1,40 @@
+<ion-content>
+    <ion-card class="ion-cards-heading">
+        <img src="/assets/m3.png" alt="" />
+        <ion-card-content>
+            <ion-grid>
+                
+                <!-- <h3 text-center>Logged in as <span style="color: rgb(145, 188, 238)">user@gmail.com</span></h3> -->
+                
+                <ion-row>
+                    <ion-col class="ion-text-left">
+                        <div routerLink="/tabs">
+                          <ion-button slot="icon-only" color="none">
+                              <ion-icon name="home"></ion-icon>
+                          </ion-button>
+                        </div>
+                    </ion-col>
+                    <ion-col class="ion-text-right">
+                      <ion-button color="none" (click)="mosqUserLogout()">
+                          <ion-icon slot="start" name="log-out"></ion-icon>
+                          Logout
+                      </ion-button>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-card-content>
+    </ion-card>
+    
+    <ion-list *ngFor="let v of mosques">
+      <ion-item routerLink="../mosquedashboard/{{v.mosque.id}}">
+        <ion-thumbnail slot="start">
+            <img [src]="'https://optest.therssoftware.com/prayer_app/'+ v.mosque.main_image">
+        </ion-thumbnail>
+        <ion-label>
+            <h3>{{ v.mosque.name }}</h3>
+            <p>{{ v.mosque.location }}</p>
+        </ion-label>
+    </ion-item>
+    </ion-list>
+    <h3 style="margin-top: 60px;text-align: center"  *ngIf="!mosques && !isloading"> No mosque assigned yet </h3>
+</ion-content>

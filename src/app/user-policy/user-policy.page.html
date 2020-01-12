@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-toolbar color="success">
+      <ion-buttons slot="start">
+          <ion-back-button defaultHref="/privacy" icon="arrow-back"></ion-back-button>
+      </ion-buttons>
+    <ion-title>User Agreement</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding *ngIf="dataAvailable">
+    <h4>{{ aggrement[0]['title'] }} </h4>
+    <p>{{ aggrement[0]['description'] }}</p>
+    
+</ion-content>

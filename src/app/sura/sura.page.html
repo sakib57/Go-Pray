@@ -1,0 +1,106 @@
+<ion-header>
+    <ion-toolbar color="success">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/tabs/tab2" icon="arrow-back"></ion-back-button>
+        </ion-buttons>
+        <!-- <ion-select>
+            <ion-select-option value="1" selected>Al-Fatihah</ion-select-option>
+            <ion-select-option value="2">Al-Baqarah</ion-select-option>
+            <ion-select-option value="3"> Al Imran</ion-select-option>
+            <ion-select-option value="4">An-Nisa'</ion-select-option>
+            <ion-select-option value="5">Al-Ma'idah</ion-select-option>
+            <ion-select-option value="6">Al-An'am</ion-select-option>
+        </ion-select> -->
+        <ion-title>{{data.transliteration_en}}</ion-title>
+        <ion-icon slot="end" name="keypad"></ion-icon>
+    </ion-toolbar>
+</ion-header>
+<ion-menu side="start" menuId="custom" class="my-custom-menu">
+    <ion-header>
+        <ion-toolbar color="tertiary">
+            <ion-title>Custom Menu</ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content>
+        <ion-list>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+        </ion-list>
+    </ion-content>
+</ion-menu>
+
+<ion-content>
+    <ion-list>
+        <ion-item class="ion-no-padding" *ngFor="let v of data.verses let i=index">
+            <ion-label class="ion-text-wrap" (click)="onButtonClick(i,data.number,v.number)">
+                <p  class="sura_arobi ion-text-right"><span style="font-size: 12px"> {{ v.number }} </span>{{ v.text }}</p>
+                <p class="ion-text-left" color="success tint">{{ v.translation_en }}</p>
+                <div [class.ss_menu_q_list]="active_item == i" *ngIf="buttonClicked && active_item == i">
+                    <ion-grid>
+                        <ion-row class="ion-align-items-center">
+                            <ion-col>
+                                <ion-icon (click)="play()" name="play"></ion-icon>
+                                <ion-label>Play</ion-label>
+                            </ion-col>
+                            <ion-col>
+                                <ion-icon name="clipboard"></ion-icon>
+                                <ion-label>Note</ion-label>
+                            </ion-col>
+                            <ion-col>
+                                <ion-icon name="checkmark"></ion-icon>
+                                <ion-label>Read</ion-label>
+                            </ion-col>
+                            <ion-col>
+                                <ion-icon name="bookmark"></ion-icon>
+                                <ion-label>Favourite</ion-label>
+                            </ion-col>
+                            <ion-col>
+                                <ion-icon name="share"></ion-icon>
+                                <ion-label>Share</ion-label>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </div>
+                <div [class.ss_menu_q_list]="active_item == i && isPlaying" *ngIf="isPlaying && active_item == i">
+                        <ion-grid>
+                            <ion-row class="ion-align-items-center">
+                                <ion-col>
+                                    <ion-spinner *ngIf="isDownloading" name="lines"></ion-spinner>
+                                    <ion-label *ngIf="isDownloading">Downloading</ion-label>
+                                    <ion-icon *ngIf="!isDownloading" (click)="pause()" name="pause"></ion-icon>
+                                    <ion-label *ngIf="!isDownloading">Stop</ion-label>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </div>
+            </ion-label>
+            
+        </ion-item>
+
+
+    </ion-list>
+</ion-content>
+<ion-footer class="spaceFooter">
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ion-icon name="arrow-back"></ion-icon>
+            </ion-col>
+            <ion-col>
+                <ion-icon name="switch"></ion-icon>
+            </ion-col>
+            <ion-col>
+                <ion-icon name="play"></ion-icon>
+            </ion-col>
+            <ion-col>
+                <ion-icon name="photos"></ion-icon>
+            </ion-col>
+            <ion-col>
+                <ion-icon name="arrow-forward"></ion-icon>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-footer>

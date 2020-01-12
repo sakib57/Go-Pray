@@ -1,0 +1,94 @@
+<ion-header>
+    <ion-toolbar color="success">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="mosquedashboard/{{ mosque_id }}" icon="arrow-back"></ion-back-button>
+        </ion-buttons>
+        <ion-title> Mosque Profile info </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="dataAvailable && !isloading">
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+
+        <ion-item>
+            <ion-label>Show/Hide Notic</ion-label>
+            <ion-toggle 
+                color="primary" 
+                [checked]="mosqueDetail.mosque_details.notice_flag == '1'"
+                name="notice"
+                [ngModel]
+                
+            ></ion-toggle>
+        </ion-item>
+        <ion-item>
+            <ion-label>Show/Hide About Info </ion-label>
+            <ion-toggle
+                [checked]="mosqueDetail.mosque_details.description_flag == '1'" 
+                color="primary"
+                name="about"
+                [ngModel]
+            ></ion-toggle>
+        </ion-item>
+        <ion-item>
+            <ion-label> Show/Hide Doa Info </ion-label>
+            <ion-toggle 
+                color="primary" 
+                [checked]="mosqueDetail.mosque_details.doa_flag == '1'"
+                name="doa"
+                [ngModel]
+            ></ion-toggle>
+        </ion-item>
+        <ion-item>
+            <ion-label>Show/Hide Not prayer time namaz</ion-label>
+            <ion-toggle 
+                color="primary" 
+                [checked]="mosqueDetail.mosque_details.prayer_time_flag == '1'"
+                name="prayer"
+                [ngModel]
+            ></ion-toggle>
+        </ion-item>
+        <ion-item>
+            <ion-label position="stacked">Mosque Name</ion-label>
+            <ion-input 
+                name="name"
+                type="text" 
+                placeholder="Name" 
+                [(ngModel)]="mosqueDetail.mosque_details.name" 
+                required
+            ></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="stacked">Mosque Address</ion-label>
+            <ion-input 
+                [(ngModel)]="searchTerm"
+                (ionInput)="filterItems($event)"
+                name="addr"
+                required
+            ></ion-input>
+
+            <ion-list *ngIf="isItemAvailable">
+                <ion-item *ngFor="let item of alllocation" (click)="locationClick(item)">
+                    {{ item.description }}
+                </ion-item>
+            </ion-list>
+        </ion-item>
+        <ion-item>
+            <ion-label position="stacked">About Mosque </ion-label>
+            <ion-textarea rows="6" cols="20"
+                name="desc"
+                type="text" 
+                placeholder="About" 
+                [(ngModel)]="mosqueDetail.mosque_details.description" 
+                required
+            >
+            </ion-textarea>
+        </ion-item>
+        <div padding text-center>
+            <ion-button type="submit" color="success">Update</ion-button>
+        </div>
+
+    </form>
+</ion-content>
+<ion-content *ngIf="!dataAvailable && !isloading">
+    <h3 style="margin-top:20px;text-align:center">Data unavailable</h3>
+</ion-content>

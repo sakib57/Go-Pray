@@ -1,0 +1,15 @@
+ion-content {
+    --background: url(../../assets/kaba_bg.jpg) 0 0/100% no-repeat;
+    color: #fff;
+    ion-item {
+        --background: transparent;
+        color: #fff;
+    }
+    h1 {
+        color: #fff;
+    }
+    p {
+        color: #fff;
+        margin: 5px 0px;
+    }
+}

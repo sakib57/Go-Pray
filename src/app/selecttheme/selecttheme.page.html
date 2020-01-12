@@ -1,0 +1,71 @@
+<ion-header>
+    <ion-toolbar color="success">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="mosquedashboard/{{ mosque_id }}" icon="arrow-back"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Select theme </ion-title>
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" *ngIf="dataAvailable">
+    <form>
+        <ion-grid>
+            <ion-radio-group >
+                <ion-row>
+                    <ion-col>
+                        <div>
+                            <ion-item>
+                                <ion-label>Theeme 1</ion-label>
+                                <ion-radio (ionSelect)="change(1)" color="success" value="1" [checked]="theme == '1'"></ion-radio>
+                            </ion-item>
+                            <img src="/assets/t1.png" alt="" />
+                        </div>
+                        
+                    </ion-col>
+    
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <ion-item>
+                            <ion-label class="ion-text-wrap">Theeme 2</ion-label>
+                            <ion-radio (ionSelect)="change(2)" color="success" value="2" [checked]="theme == '2'"></ion-radio>
+                        </ion-item>
+                        <img class="ion-text-wrap" src="/assets/t2.png" alt="" />
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <ion-item>
+                            <ion-label class="ion-text-wrap">Theeme 3</ion-label>
+                            <ion-radio (ionSelect)="change(3)" color="success" value="3" [checked]="theme == '3'"></ion-radio>
+                        </ion-item>
+                        <img class="ion-text-wrap" src="/assets/t3.png" alt="" />
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <ion-item>
+                            <ion-label class="ion-text-wrap">Theeme 4</ion-label>
+                            <ion-radio (ionSelect)="change(4)" color="success" value="4" [checked]="theme == '4'"></ion-radio>
+                        </ion-item>
+                        <img class="ion-text-wrap" src="/assets/t4.png" alt="" />
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <ion-item>
+                            <ion-label class="ion-text-wrap">Theeme 5</ion-label>
+                            <ion-radio (ionSelect)="change(5)" color="success" value="5" [checked]="theme == '5'"></ion-radio>
+                        </ion-item>
+                        <img class="ion-text-wrap" src="/assets/t5.png" alt="" />
+                    </ion-col>
+                </ion-row>
+            </ion-radio-group>
+        </ion-grid>
+    </form>
+</ion-content>
+
+<ion-content *ngIf="!dataAvailable">
+    <h3 style="margin-top: 60px;text-align: center" *ngIf="!dataAvailable"> No Theme Found </h3>
+</ion-content>

@@ -1,0 +1,36 @@
+<ion-header>
+    <ion-toolbar color="success">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="noticedetails/{{ data.id }}?mosque_id={{ mosque_id }}&notice_flag={{ notice_flag }}" icon="arrow-back"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Edit Notic </ion-title>
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="dataAvailable && !isloading">
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+        <ion-item>
+            <ion-label position="stacked">Title</ion-label>
+            <ion-input 
+                name="title"
+                type="text" 
+                placeholder="title" 
+                [(ngModel)]="data.title" 
+                required
+            ></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="stacked">Description</ion-label>
+            <ion-textarea name="notice" [(ngModel)]="data.notice" rows="6" cols="20" value="In accordance with AIC and Shire of Gosnells strict conditions, Thornlie Masjid has restricted opening and closing times including capacity of numbers. DON'T BE LATE"></ion-textarea>
+        </ion-item>
+        <div class="ion-padding">
+            <ion-button type="submit" color="success">Updated</ion-button>
+        </div>
+    </form>
+</ion-content>
+
+<ion-content *ngIf="!dataAvailable && !isloading">
+    <h3 style="margin-top:20px;text-align:center">No notice</h3>
+</ion-content>

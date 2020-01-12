@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar color="success">
+      <ion-buttons slot="start">
+          <ion-back-button defaultHref="/" (click)="goBack()" icon="arrow-back"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Notice </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+
+      <ion-item-sliding *ngFor="let v of allNotice; let i = index" >
+          <ion-item  detail routerLink="/notification-detail/{{ v.id }}" [queryParams]="{ mosque_id: mosque_id}">{{ v.title }}</ion-item>
+      </ion-item-sliding>
+
+  </ion-list>
+  <h3 style="margin-top: 60px" class="ion-text-center" *ngIf="!allNotice && !isloading"> No notice yet </h3>
+
+</ion-content>

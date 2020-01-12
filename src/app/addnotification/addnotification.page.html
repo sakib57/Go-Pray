@@ -1,0 +1,26 @@
+<ion-header>
+    <ion-toolbar color="success">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="notification/{{ mosque_id }}" icon="arrow-back"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Add Notic </ion-title>
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form #form="ngForm" (ngSubmit)="onsubmit(form)">
+        <ion-item>
+            <ion-label position="stacked">Title</ion-label>
+            <ion-input type="text" ngModel required name="title" placeholder="Notic Title here"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="stacked">Description</ion-label>
+            <ion-textarea type="text" ngModel required name="notice" rows="6" cols="20" placeholder=" Notic Description here"></ion-textarea>
+        </ion-item>
+        <div class="ion-padding">
+            <ion-button [disabled]="!form.valid" type="submit" color="success">Save</ion-button>
+        </div>
+    </form>
+</ion-content>

@@ -1,0 +1,30 @@
+<ion-header>
+    <ion-toolbar color="success">
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="arrow-back"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Add Dua </ion-title>
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form>
+        <ion-item>
+            <ion-label position="stacked">Aribe</ion-label>
+            <ion-input placeholder="Dua Aribe here"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="stacked">Transliteration</ion-label>
+            <ion-textarea rows="8" cols="20" placeholder=" Dua Transliteration here"></ion-textarea>
+        </ion-item>
+        <ion-item>
+            <ion-label position="stacked">Translation</ion-label>
+            <ion-textarea rows="8" cols="20" placeholder=" Dua Translation here"></ion-textarea>
+        </ion-item>
+        <div padding>
+            <ion-button routerLink="/notification" type="submit" color="success">Saved</ion-button>
+        </div>
+    </form>
+</ion-content>

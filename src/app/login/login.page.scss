@@ -1,0 +1,44 @@
+ion-content {
+    --background: url(../../assets/homebanner.jpg) 0 0/100% 100% no-repeat;
+    color: #fff;
+    ion-toolbar {
+        --background: transparent;
+    }
+    .logo {
+        padding: 20% 0;
+        text-align: center;
+    }
+
+    .auth-btn{
+        position: absolute;
+        top: 250px;
+        left: 5%;
+        width: 90%;
+    }
+    .social_button {
+        position: absolute;
+        bottom: 20px;
+        left: 5%;
+        width: 90%;
+        .facebook {
+            --background: #3b5998;
+            color: #fff;
+            --border-radius: 60px;
+            --border: none;
+            width: 100%;
+        }
+        .google {
+            --background: #DD4B39;
+            color: #fff;
+            --border-radius: 60px;
+            --border: none;
+            width: 100%;
+        }
+    }
+}
+.login{
+    --border-color: white;
+    --border-width:2px;
+    --color: white;
+    --color-activated: white;
+}
