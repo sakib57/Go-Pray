@@ -86,7 +86,7 @@
     "integrator-cordova-plugin-downloader": "^1.1.0",
     "intl": "^1.2.5",
     "ionic2-calendar": "^0.5.2",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "phonegap-plugin-multidex": "^1.0.0",
     "phonegap-plugin-push": "^2.2.3",
     "rxjs": "~6.5.1",
